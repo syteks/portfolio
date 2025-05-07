@@ -9,19 +9,19 @@
   <nav class="">
     <div class="mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex flex-row h-16 items-center justify-around">
-        <div class="hidden sm:block">
-          <ButtonLink
-            class="px-3 py-2 text-sm"
-            rel="noopener"
-            target="_self"
-            aria-current="page"
-            href="#home_page"
-          >
-            Home
-          </ButtonLink>
-        </div>
+        <!-- Filler div we can add a button, but for now I keep it empty-->
+        <div class="hidden sm:block"></div>
         <div class="hidden sm:block">
           <div class="flex space-x-2">
+            <ButtonLink
+              class="px-3 py-2 text-sm"
+              rel="noopener"
+              target="_self"
+              aria-current="page"
+              href="#home_page"
+            >
+              Home
+            </ButtonLink>
             <ButtonLink
               class="px-3 py-2 text-sm"
               rel="noopener"
