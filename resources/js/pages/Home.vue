@@ -32,7 +32,7 @@
                         <h1 class="text-white">Sergiu Grigore Turcanu</h1>
                       </div>
                       <div class="flex font-sans items-center justify-center my-2 xl:text-3xl md:text-2xl sm:text-1xl">
-                        <h2 class="text-white">Senior Software developer</h2>
+                        <h2 class="text-white">Senior Software Developer</h2>
                       </div>
                     </div>
                   </div>

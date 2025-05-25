@@ -134,6 +134,7 @@
             'Tailwind CSS',
             'InertiaJS',
             'WordPress',
+            'PHPUnit',
           ],
         },
         {
@@ -141,13 +142,14 @@
           items: [
             'PHPStorm',
             'DataGrip',
+            'DataGrip',
             'Git',
             'Postman',
             'BitBucket',
             'Jira',
             'Laravel Nova',
             'Vite',
-            'PHPUnit',
+            'Inertia',
           ],
         }
       ],
@@ -315,16 +317,17 @@
 <template>
   <section id="experience_page">
     <div
-      class="pt-24 sticky top-0 h-screen bg-gradient-to-b from-gray-800 to-gray-600 text-white"
+      class="pt-24 sticky top-0 min-h-screen bg-gradient-to-b from-gray-800 to-gray-600 text-white"
     >
         <div
-          class="flex justify-center"
+          class="flex justify-center flex-col md:flex-row pl-12 md:pl-0"
         >
             <Folder
               v-for="experience in experiences"
               :folder="experience"
               :isActive="clickedFolderTitle === experience.title"
               @folder-clicked="setActiveFolder"
+              class="mb-8 md:mb-0"
             >
             </Folder>
         </div>

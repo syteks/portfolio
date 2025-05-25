@@ -10,8 +10,8 @@
     <div class="mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex flex-row h-16 items-center justify-around">
         <!-- Filler div we can add a button, but for now I keep it empty-->
-        <div class="hidden sm:block"></div>
-        <div class="hidden sm:block">
+        <div class="sm:block"></div>
+        <div class="sm:block">
           <div class="flex space-x-2">
             <ButtonLink
               class="px-3 py-2 text-sm"
