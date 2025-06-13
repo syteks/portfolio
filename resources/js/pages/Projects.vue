@@ -13,7 +13,7 @@
       projectDescription: "Developed a Reddit Meme Bot using GoLang to programmatically fetch memes from Reddit. This project was initiated out of personal interest and a desire to gain hands-on experience with GoLang, focusing on practical application in a self-directed learning environment.",
     },
     {
-      projectURL: "https://github.com/syteks/goat",
+      projectURL: "https://github.com/syteks/portfolio",
       imageName: "Portfolio.png",
       projectTitle: "Portfolio - (PHP & Vue.js & TailwindCSS)",
       projectDescription: "Developed a web-based platform using PHP for the backend and Vue.js for the frontend, leveraging a strong preference for these languages in web development. As a backend developer, I utilized resources like Google and Gemini to explore diverse design styles and apply accumulated knowledge to the project. The current focus is on the Vue.js frontend, with future plans to implement an admin panel to enable dynamic content updates, moving away from hardcoded content.",
