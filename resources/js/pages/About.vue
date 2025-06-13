@@ -16,7 +16,7 @@
                     <div class="absolute inset-0 rounded-full border-2 border-red-500">
                       <img
                         class="h-full w-full object-cover rounded-full"
-                        src="/storage/images/PortfolioTest.jpg"
+                        src="/images/PortfolioTest.jpg"
                         alt="pictures"
                       />
                     </div>
