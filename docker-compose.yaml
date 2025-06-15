@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    image: portfolio-app
+    container_name: portfolio-app
+    restart: unless-stopped
+    working_dir: /var/www
+    # No volume mounts in production
+    env_file:
+      - .env
+    networks:
+      - app-network
+
+  node:
+    build:
+      context: .
+      dockerfile: docker/node/Dockerfile
+      args:
+        MODE: production
+    image: portfolio-node
+    container_name: portfolio-node
+    restart: on-failure
+    working_dir: /var/www
+    # No volume mounts in production
+    networks:
+      - app-network
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    image: portfolio-nginx
+    container_name: portfolio-nginx
+    depends_on:
+      - app
+    ports:
+      - "8080:80"
+    # No bind mounts in production
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
