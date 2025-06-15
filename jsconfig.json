@@ -7,7 +7,7 @@
     "paths": {
       "@/*": ["resources/js/*"],
       "@components/*": ["resources/js/components/*"],
-      "@composables/*": ["resources/js/composables/*"],
+      "@composables/*": ["resources/js/composables/*"]
     }
   },
   "exclude": ["node_modules"],
