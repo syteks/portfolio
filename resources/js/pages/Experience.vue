@@ -320,7 +320,7 @@
       class="pt-24 sticky top-0 min-h-screen bg-gradient-to-b from-gray-800 to-gray-600 text-white"
     >
         <div
-          class="flex justify-center flex-col md:flex-row px-16  sm:px-0"
+          class="flex justify-center flex-col md:flex-row items-center"
         >
             <Folder
               v-for="experience in experiences"
