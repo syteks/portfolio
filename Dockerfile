@@ -62,4 +62,4 @@ USER root
 
 EXPOSE 8080
 
-CMD ["/bin/sh", "-c", "envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/sites-enabled/default && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/bin/sh", "-c", "envsubst '${PORT},${DOMAIN_NAME}' < /etc/nginx/nginx.conf.template > /etc/nginx/sites-enabled/default && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]

@@ -268,10 +268,10 @@
   ];
 
   const skillStyle = {
-    'Coding Languages': 'bg-blue-800 border-blue-50',
-    'Databases': 'bg-purple-800 border-purple-50',
-    'Frameworks': 'bg-amber-800 border-amber-50',
-    'Tools': 'bg-green-800 border-green-50',
+    'Coding Languages': 'bg-gray-800 border-blue-500',
+    'Databases': 'bg-gray-800 border-purple-500',
+    'Frameworks': 'bg-gray-800 border-amber-500',
+    'Tools': 'bg-gray-800 border-green-500',
   };
 
   const clickedFolderTitle = ref("Aylo")
@@ -320,7 +320,7 @@
       class="pt-24 sticky top-0 min-h-screen bg-gradient-to-b from-gray-800 to-gray-600 text-white"
     >
         <div
-          class="flex justify-center flex-col md:flex-row pl-12 md:pl-0"
+          class="flex justify-center flex-col md:flex-row px-16  sm:px-0"
         >
             <Folder
               v-for="experience in experiences"
@@ -333,7 +333,7 @@
         </div>
         <BaseCard
           v-if="clickedFolderTitle"
-          :classes="'border rounded-lg shadow bg-gray-800 border-gray-700 max-w-7xl mx-auto mt-8 space-y-8 shadow-lg rounded-lg p-6'"
+          :classes="'border shadow bg-gray-800 border-gray-700 max-w-7xl mt-8 mx-12 sm:mx-auto space-y-8 shadow-lg rounded-lg p-6'"
         >
           <CardHeader
             :title="clickedFolderTitle"
@@ -353,7 +353,7 @@
           <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <BaseCard
               v-for="skill in getJobSkillsForSelectedFolder()"
-              :classes="skillStyle[skill.title] + ' border  p-4 rounded-md shadow-sm'"
+              :classes="skillStyle[skill.title] + ' border p-4 rounded-md shadow-sm mx-12 sm:mx-0'"
             >
               <h4 class="font-semibold text-white-800 mb-2 text-center">{{ skill.title }}</h4>
               <ul

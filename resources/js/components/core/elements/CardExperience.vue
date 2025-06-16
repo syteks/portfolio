@@ -24,7 +24,7 @@
     <div class="flex flex-col gap-2">
       <div class="flex justify-between items-center">
         <span class="text-lg font-semibold">• {{ props.title }}</span>
-        <span class="text-md text-green-500">{{ props.date }}</span>
+        <span class="hidden sm:flex text-md text-green-500">{{ props.date }}</span>
       </div>
     </div>
     <div class="pl-4 mt-1 border-l-2 border-white ml-2">

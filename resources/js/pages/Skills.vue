@@ -112,7 +112,7 @@
 
 <template>
   <section id="skills_page">
-    <div class="pt-24 pl-8 md:pl-0 sticky min-h-screen py-8 bg-gradient-to-b from-gray-600 to-gray-800  text-white">
+    <div class="pt-24 px-12 sm:px-0 sticky min-h-screen py-8 bg-gradient-to-b from-gray-600 to-gray-800  text-white">
       <div class="flex justify-center flex-col md:flex-row">
         <BaseCard
           v-for="skill in skills"

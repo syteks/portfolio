@@ -1,11 +1,11 @@
 <script setup>
-
+import SocialMedia from '@components/core/models/SocialMedia.vue';
 </script>
 
 <template>
   <section id="home_page">
-    <div class="sticky w-100 top-0 h-screen flex flex-col justify-center items-center bg-gradient-to-b from-gray-800 to-gray-600">
-      <div class="relative flex flex-col justify-center overflow-hidden py-6 font-sans sm:py-12">
+    <div class="sticky w-100 h-screen flex flex-col items-center bg-gradient-to-b from-gray-800 to-gray-600">
+      <div class="relative flex flex-col justify-center overflow-hidden pt-[6rem] lg:pt-44  py-6 font-sans sm:py-12">
         <div class=" flex w-full items-center justify-center">
           <div class="flex relative items-center overflow-hidden rounded-xl border border-gray-800 p-[1.5px]">
             <div class="animate-rotate absolute inset-0 rounded-full bg-[conic-gradient(#0ea5e9_20deg,transparent_120deg)]"></div>
@@ -17,7 +17,7 @@
                       <img
                         class="h-full w-full object-cover rounded-full"
                         src="/images/PortfolioTest.jpg"
-                        alt="pictures"
+                        alt="senior-backend-developer-sergiu-grigore-turcanu"
                       />
                     </div>
                   </div>
@@ -32,6 +32,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="flex md:hidden space-x-2">
+        <SocialMedia/>
       </div>
     </div>
   </section>

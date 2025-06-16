@@ -22,7 +22,7 @@
 
 <template>
   <div
-    class="relative group flex flex-col items-center justify-center w-fit h-fit px-5"
+    class="relative group flex flex-col items-center justify-center w-fit h-fit lg:px-5 sm:px-2"
     @click="emitClickEvent"
   >
     <div

@@ -1,6 +1,6 @@
 server {
     listen ${PORT};
-    server_name _;
+    server_name ${DOMAIN_NAME:-localhost};
 
     root /var/www/public;
     index index.php index.html;
