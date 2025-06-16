@@ -30,7 +30,8 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     nginx \
-    supervisor && \
+    supervisor \
+    gettext &&  \
     docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -53,7 +54,7 @@ RUN composer install --no-dev --optimize-autoloader
 RUN chown -R www-data:www-data /var/www && chmod -R 755 /var/www/storage
 
 # Copy NGINX and Supervisor config
-COPY docker/nginx/nginx.conf /etc/nginx/sites-available/default
+COPY docker/nginx/nginx.conf.template /etc/nginx/nginx.conf.template
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Use default user
@@ -61,4 +62,4 @@ USER root
 
 EXPOSE 8080
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/bin/sh", "-c", "envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/sites-enabled/default && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]

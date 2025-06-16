@@ -1,8 +1,6 @@
 server {
-    listen 80;
+    listen ${PORT};
     server_name _;
-    # Uncomment this when we have the domain name set up on google
-    #server_name sergiugrigoreturcanu.com www.sergiugrigoreturcanu.com;
 
     root /var/www/public;
     index index.php index.html;
