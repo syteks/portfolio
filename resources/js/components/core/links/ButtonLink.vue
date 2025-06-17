@@ -9,7 +9,7 @@
   <BaseLink
     :href="props.href"
     :target="props.target"
-    class="rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+    class="rounded-md text-base font-medium text-gray-300 hover:text-yellow-400"
   >
     <slot></slot>
   </BaseLink>

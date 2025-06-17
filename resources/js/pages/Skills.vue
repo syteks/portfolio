@@ -112,8 +112,8 @@
 
 <template>
   <section id="skills_page">
-    <div class="pt-24 sticky top-0 min-h-screen bg-gradient-to-b from-gray-600 to-gray-800  text-white">
-      <div class="flex justify-center flex-col md:flex-row items-center">
+    <div class="pt-24 px-12 sm:px-0 sticky min-h-screen py-8 text-white">
+      <div class="flex justify-center flex-col md:flex-row">
         <BaseCard
           v-for="skill in skills"
           class="mb-8 md:mb-0"

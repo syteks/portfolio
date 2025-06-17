@@ -22,7 +22,7 @@
 </script>
 <template>
   <section id="projects_page">
-    <div class="pt-24 p-8 md:pl-0 sticky min-h-screen py-8 bg-gradient-to-b from-gray-600 to-gray-800  text-white">
+    <div class="pt-24 p-8 md:pl-0 sticky min-h-screen py-8 text-white">
       <div class="flex justify-center flex-col md:flex-row">
         <div
           v-for="project in projects"
