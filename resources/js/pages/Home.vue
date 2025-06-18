@@ -7,16 +7,15 @@
   import SocialMedia from '@components/core/models/SocialMedia.vue';
   import ColoredTitle from '@components/core/elements/ColoredTitle.vue';
   import ColoredSeparator from '@components/core/elements/ColoredSeparator.vue';
-  import PageLayout from '@/layouts/PageLayout.vue';
-
 </script>
 
 <template>
-
   <BaseLayout>
     <template #main>
-        <div class="relative">
-          <section id="home_page">
+          <section
+            id="home_page"
+            class="min-h-screen w-full"
+          >
             <div class="sticky w-100 h-screen flex flex-col justify-center items-center">
               <div class="relative flex flex-col justify-center overflow-hidden font-sans ">
                 <div class="flex flex-col justify-center items-center bg-transparent relative rounded-[0.60rem]">
@@ -40,7 +39,7 @@
                   </div>
                   <ColoredSeparator/>
                   <div class="flex font-sans items-center justify-center sm:text-2xl text-xl my-2 ">
-                    <h2 class="text-white text-xl md:text-2xl font-light max-w-2xl mx-auto opacity-0 animate-slide-down-fade motion-reduce:animate-none">Senior Software Developer</h2>
+                    <h2 class="text-white text-xl md:text-3xl font-light max-w-2xl mx-auto opacity-0 animate-slide-down-fade motion-reduce:animate-none">Senior Software Developer</h2>
                   </div>
                 </div>
               </div>
@@ -53,7 +52,6 @@
           <Skills></Skills>
           <Experience></Experience>
           <Projects></Projects>
-        </div>
     </template>
   </BaseLayout>
 </template>

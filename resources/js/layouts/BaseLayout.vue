@@ -43,7 +43,6 @@
         </main>
         <footer>
           <slot name="footer"></slot>
-          <p>&copy; 2025 Your Name. All rights reserved.</p>
         </footer>
       </div>
 
