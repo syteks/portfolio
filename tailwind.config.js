@@ -47,6 +47,40 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        'about-me-page-fade-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(20px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
+        },
+        'fall-and-fade': {
+          '0%': {
+            transform: 'translateY(-50%)',
+            opacity: '0',
+          },
+          '5%, 20%': {
+            transform: 'translateY(0)',
+            opacity: '1',
+          },
+          '25%, 100%': {
+            transform: 'translateY(50%)',
+            opacity: '0',
+          },
+        },
+        'slide-in-left': {
+          '0%': {
+            transform: 'translateX(-100%)',
+            opacity: '0',
+          },
+          '100%': {
+            transform: 'translateX(0)',
+            opacity: '1',
+          },
+        },
       },
       animation: {
         'rotate': "rotate 10s linear infinite",
@@ -64,6 +98,9 @@ export default {
         'text-glow-pulse': 'text-glow-pulse 3s ease-in-out infinite',
         'slide-down-fade': 'slide-down-fade 1.5s ease-out forwards',
         'fade-in-up': 'fade-in-up 1.5s ease-out forwards 0.2s',
+        'slide-in-left': 'slide-in-left 1.5s ease-out forwards',
+        'about-me-page-fade-in': 'fade-in-up 1s ease-out forwards',
+        'fall-and-fade': 'fall-and-fade 16s ease-in-out infinite',
       },
     },
   },

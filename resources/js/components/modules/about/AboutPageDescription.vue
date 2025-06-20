@@ -1,5 +1,5 @@
 <script setup>
-  import ColoredTitle from '@components/core/elements/ColoredTitle.vue';
+import ColoredTitle from '@components/core/elements/ColoredTitle.vue';
 </script>
 
 <template>

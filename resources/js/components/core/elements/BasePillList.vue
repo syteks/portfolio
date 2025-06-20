@@ -1,26 +1,26 @@
 <script setup>
-  import BasePill from '@components/core/elements/BasePill.vue';
+import BasePill from '@components/core/elements/BasePill.vue';
 
-  const props = defineProps({
-    pills: {
-      type: Array,
-      default: () => [{}]
-    },
-    showMore: {
-      type: Boolean,
-      default: false
-    }
-  });
+const props = defineProps({
+  pills: {
+    type: Array,
+    default: () => [{}],
+  },
+  showMore: {
+    type: Boolean,
+    default: false,
+  },
+});
 
-  /**
-   * Hide pill if it's index is equal to hiddenIndex.
-   * @param pill
-   * @param index
-   * @return {string}
-   */
-  const hidePillClass = (pill, index) => {
-    return props.showMore === false && index >= pill.hiddenIndex ? 'hidden' : '';
-  }
+/**
+ * Hide pill if it's index is equal to hiddenIndex.
+ * @param pill
+ * @param index
+ * @return {string}
+ */
+const hidePillClass = (pill, index) => {
+  return props.showMore === false && index >= pill.hiddenIndex ? 'hidden' : '';
+};
 </script>
 
 <template>

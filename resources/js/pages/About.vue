@@ -1,42 +1,106 @@
 <script setup>
-import SocialMedia from '@components/core/models/SocialMedia.vue';
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 import ColoredTitle from '@components/core/elements/ColoredTitle.vue';
-import AboutPageDescription from '@components/modules/about/AboutPageDescription.vue';
+import LightBulb from '@components/core/svgs/LightBulb.vue';
+import IconAngleBrackets from '@components/core/svgs/IconAngleBrackets.vue';
+import Briefcase from '@components/core/svgs/Briefcase.vue';
+import AboutMeJourney from '@components/core/elements/AboutMeJourney.vue';
+import FallAndFadeTexts from '@components/core/elements/FallAndFadeTexts.vue';
+
+// The journey content
+const myJourneyContent = [
+  {
+    title: 'The Spark',
+    description: 'It all started at 16 with a spark of curiosity and an obsession with tutorials. I was driven to understand how my favorite websites and games were built, a fascination that quickly grew into a lifelong passion for creating digital experiences from scratch.',
+    icon: LightBulb,
+    animationDelay: '0.4s',
+  },
+  {
+    title: 'Learning the Craft',
+    description: 'That curiosity turned into code at age 18. While building my first projects in PHP and C++, I discovered my true calling wasn\'t just in the final product, but in solving the complex puzzles behind it. I found my passion in backend development, drawn to the power of logic and architecture challenges.',
+    icon: IconAngleBrackets,
+    animationDelay: '0.6s',
+  },
+  {
+    title: 'Professional Growth',
+    description: 'In the professional world, my skills evolved beyond just code. I gained a holistic understanding of the project lifecycle—from planning and risk assessment to upholding industry standards. While PHP is my specialty, I\'m a versatile developer proficient in JS/TS, C#, Java, Go, and more.',
+    icon: Briefcase,
+    animationDelay: '0.8s',
+  },
+];
+
+const journeyContainer = ref(null);
+const startAnimation = ref(false);
+
+let observer = null;
+
+onMounted(() => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        startAnimation.value = true;
+        observer.disconnect();
+      }
+    },
+    {
+      // Trigger when 20% of the element is visible.
+      threshold: 0.2,
+    },
+  );
+
+  // Start observing the component's main container.
+  if (journeyContainer.value) {
+    observer.observe(journeyContainer.value);
+  }
+});
+
+onBeforeUnmount(() => {
+  // Clean up the observer when the component is destroyed.
+  if (observer) {
+    observer.disconnect();
+  }
+});
+
+const quotes = [
+  'From curiosity to creation.',
+  'First, solve the problem. Then, write the code.',
+  'Code is like humor. When you have to explain it, it’s bad.',
+  'The best way to predict the future is to invent it.',
+];
+
 </script>
 
 <template>
-<!--  flex items-center justify-center max-w-4xl mx-auto text-white-->
-  <section class="min-h-screen w-full flex justify-center items-center">
-    <div class="flex flex-col md:flex-row items-center md:space-x-4 space-y-4 md:space-y-0 max-w-4xl">
-      <AboutPageDescription class="block sm:hidden"/>
-      <div class="flex flex-col justify-center items-center w-full bg-opacity-50 rounded-lg shadow-xl p-4 pt-0 sm:pt-4 pb-0 sm:pb-4">
-        <img
-          src="/images/AboutImage.png"
-          alt="Software Developer backend laptop"
-          class="rounded-lg w-auto sm:w-full h-auto object-cover mb-4"
-        >
-        <p class="text-lg text-gray-200">
-          Dedicated to crafting innovative solutions and bringing digital ideas to life. My passion lies in building robust, user-friendly applications that make a real impact.
-        </p>
+  <section id="about_page" class="p-4 sm:p-0">
+    <div
+      ref="journeyContainer"
+      class="w-full max-w-4xl mx-auto p-6 sm:p-10 bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-2xl shadow-2xl"
+    >
+      <div
+        class="text-center mb-12"
+        :class="{ 'animate-about-me-page-fade-in': startAnimation, 'opacity-0': !startAnimation }"
+        style="animation-delay: 0.2s;"
+      >
+        <ColoredTitle
+          title="My journey"
+          class="text-4xl font-extrabold"
+          :enable-glow="true"
+        />
+        <FallAndFadeTexts :texts="quotes"/>
       </div>
-      <div class="flex justify-center mb-8">
-        <div class="flex items-center gap-4 bg-white/5 border border-white/10 backdrop-blur-sm px-6 py-4 rounded-xl shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 4H7a2 2 0 01-2-2V6a2 2 0 012-2h3.5a1 1 0 011 1v1h2v-1a1 1 0 011-1H17a2 2 0 012 2v12a2 2 0 01-2 2z" />
-          </svg>
-          <div class="text-left">
-            <p class="text-xl font-semibold">5+ Years</p>
-            <p class="text-sm text-gray-400">Professional Experience</p>
-          </div>
-        </div>
-      </div>
-      <div class="w-full flex flex-col space-y-8">
-        <AboutPageDescription class="hidden sm:block"/>
-        <div class="bg-purple-500 bg-opacity-20 rounded-lg shadow-xl p-6">
-          <h3 class="text-3xl font-bold mb-4 text-pink-300">Experience</h3>
-          <p class="text-5xl font-extrabold text-yellow-300">5+ years</p>
-        </div>
+
+      <div class=" sm:block space-y-12">
+        <AboutMeJourney
+          v-for="journey in myJourneyContent"
+          :icon="journey.icon"
+          :title="journey.title"
+          :description="journey.description"
+          :animation-delay="journey.animationDelay"
+          :start-animation="startAnimation"
+        />
       </div>
     </div>
   </section>
+
 </template>

@@ -1,14 +1,14 @@
 <script setup>
-  const props = defineProps({
-    color: {
-      type: String,
-      default: 'bg-green-800'
-    },
-    textColor: {
-      type: String,
-      default: 'text-white'
-    },
-  });
+const props = defineProps({
+  color: {
+    type: String,
+    default: 'bg-green-800',
+  },
+  textColor: {
+    type: String,
+    default: 'text-white',
+  },
+});
 
 </script>
 

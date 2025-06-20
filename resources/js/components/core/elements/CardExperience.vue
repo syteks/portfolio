@@ -1,22 +1,22 @@
 <script setup>
-  const props = defineProps({
-    title: {
-      type: String,
-      default: null,
-    },
-    date: {
-      type: String,
-      default: null,
-    },
-    description: {
-      type: String,
-      default: null,
-    },
-    responsibilities: {
-      type: Array,
-      default: () => [],
-    },
-  });
+const props = defineProps({
+  title: {
+    type: String,
+    default: null,
+  },
+  date: {
+    type: String,
+    default: null,
+  },
+  description: {
+    type: String,
+    default: null,
+  },
+  responsibilities: {
+    type: Array,
+    default: () => [],
+  },
+});
 </script>
 
 <template>

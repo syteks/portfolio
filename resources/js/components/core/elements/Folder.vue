@@ -1,23 +1,23 @@
 <script setup>
-  const props = defineProps({
-    folder: {
-      type: Object,
-      default: () => {},
-    },
-    isActive: {
-      type : Boolean,
-      default: () => false,
-    }
-  });
+const props = defineProps({
+  folder: {
+    type: Object,
+    default: () => {},
+  },
+  isActive: {
+    type: Boolean,
+    default: () => false,
+  },
+});
 
-  const emit = defineEmits(['folder-clicked']);
+const emit = defineEmits(['folder-clicked']);
 
-  /**
-   * Emits the folder click event, which will emit the title to the parent so it can set the active folder.
-   */
-  const emitClickEvent = () => {
-    emit('folder-clicked', props.folder.title);
-  }
+/**
+ * Emits the folder click event, which will emit the title to the parent so it can set the active folder.
+ */
+const emitClickEvent = () => {
+  emit('folder-clicked', props.folder.title);
+};
 </script>
 
 <template>

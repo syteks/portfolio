@@ -14,6 +14,7 @@
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="2"
-      d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
+      d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
+    />
   </svg>
 </template>

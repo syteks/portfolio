@@ -1,12 +1,12 @@
 <script setup>
-  const props = defineProps({
-    classes: {
-      type: String,
-      default: ""
-    }
-  });
+const props = defineProps({
+  classes: {
+    type: String,
+    default: '',
+  },
+});
 
-  const defaultClasses = "border rounded-lg shadow bg-gray-800 border-gray-700 max-w-sm w-[250px] lg:w-[25%] h-fit mx-2 lg:mx-8";
+const defaultClasses = 'border rounded-lg shadow bg-gray-800 border-gray-700 max-w-sm w-[250px] lg:w-[25%] h-fit mx-2 lg:mx-8';
 </script>
 
 <template>

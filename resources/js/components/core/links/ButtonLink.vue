@@ -1,8 +1,8 @@
 <script setup>
-  import BaseLink from '@components/core/links/BaseLink.vue';
-  import { getDefaultProps } from '@composables/core/links/useLinks.js'
+import BaseLink from '@components/core/links/BaseLink.vue';
+import { getDefaultProps } from '@composables/core/links/useLinks.js';
 
-  const props = defineProps(getDefaultProps());
+const props = defineProps(getDefaultProps());
 </script>
 
 <template>

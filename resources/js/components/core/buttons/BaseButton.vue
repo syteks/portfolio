@@ -1,17 +1,17 @@
 <script setup>
 
 const props = defineProps({
-    type: {
-      type: String,
-      default: 'button'
-    },
-    customClasses: {
-      type: String,
-      default: null
-    }
+  type: {
+    type: String,
+    default: 'button',
+  },
+  customClasses: {
+    type: String,
+    default: null,
+  },
 });
 
-const defaultClasses = "p-2 text-white bg-gray-500 rounded";
+const defaultClasses = 'p-2 text-white bg-gray-500 rounded';
 
 </script>
 
