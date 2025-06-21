@@ -51,7 +51,6 @@ import ExperienceBox from '@components/core/elements/ExperienceBox.vue';
         </div>
       </section>
       <About></About>
-
       <Skills></Skills>
       <Experience></Experience>
       <Projects></Projects>

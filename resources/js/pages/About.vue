@@ -72,10 +72,10 @@ const quotes = [
 </script>
 
 <template>
-  <section id="about_page" class="p-4 sm:p-0">
+  <section id="about_page" class="p-4 sm:p-0 min-h-screen w-full">
     <div
       ref="journeyContainer"
-      class="w-full max-w-4xl mx-auto p-6 sm:p-10 bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-2xl shadow-2xl"
+      class="w-full max-w-4xl mx-auto p-6 sm:p-10 rounded-2xl"
     >
       <div
         class="text-center mb-12"
