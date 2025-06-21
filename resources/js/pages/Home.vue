@@ -21,7 +21,7 @@ import Footer from '@/pages/Footer.vue';
         <div class="sticky w-100 h-screen flex flex-col justify-center items-center">
           <div class="relative flex flex-col justify-center overflow-hidden font-sans ">
             <div class="flex flex-col justify-center items-center bg-transparent relative rounded-[0.60rem]">
-              <div class="sm:h-[36rem] sm:w-[36rem] xs:w-[28rem] xs:h-[28rem] 2xs:w-[22rem] 2xs:h-[22rem] h-[18rem] w-[18rem]">
+              <div class="sm:h-[32rem] sm:w-[32rem] xs:w-[28rem] xs:h-[28rem] 2xs:w-[22rem] 2xs:h-[22rem] h-[18rem] w-[18rem]">
                 <div class="relative w-full h-full">
                   <div class="absolute inset-0 rounded-full border-2 border-red-500">
                     <img

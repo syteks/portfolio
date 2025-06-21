@@ -47,16 +47,6 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        'about-me-page-fade-in': {
-          '0%': {
-            opacity: '0',
-            transform: 'translateY(20px)'
-          },
-          '100%': {
-            opacity: '1',
-            transform: 'translateY(0)'
-          },
-        },
         'fall-and-fade': {
           '0%': {
             transform: 'translateY(-50%)',
@@ -145,7 +135,6 @@ export default {
         'slide-down-fade': 'slide-down-fade 1.5s ease-out forwards',
         'fade-in-up': 'fade-in-up 1.5s ease-out forwards 0.2s',
         'slide-in-left': 'slide-in-left 1.5s ease-out forwards',
-        'about-me-page-fade-in': 'fade-in-up 1s ease-out forwards',
         'fall-and-fade': 'fall-and-fade 16s ease-in-out infinite',
         'fade-in-left': 'fade-in-left 0.5s ease-out forwards',
         'fade-in-right': 'fade-in-right 0.5s ease-out forwards',
