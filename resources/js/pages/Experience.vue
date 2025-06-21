@@ -55,22 +55,26 @@ import Jira from '@components/core/svgs/skills/Jira.vue';
 const calculateDuration = (start, end) => {
   const startDate = new Date(start);
   const endDate = end ? new Date(end) : new Date();
+
   let years = endDate.getFullYear() - startDate.getFullYear();
-  let months = endDate.getMonth() - startDate.getMonth();
-  if (months < 0 || (months === 0 && endDate.getDate() < startDate.getDate())) {
+  let months = (endDate.getMonth() - startDate.getMonth()) + 1;
+
+  if (months < 0) {
     years--;
-    months = (months + 12) % 12;
+    months += 12;
   }
-  if (endDate.getDate() < startDate.getDate()) {
-    months--;
-    if (months < 0) {
-      months = 11;
-      years--;
-    }
+
+  if (months === 0 && years === 0) {
+    return 'Less than a month';
   }
-  if (months === 0 && years === 0) return 'Less than a month';
-  const yearStr = years > 0 ? `${years} year${years > 1 ? 's' : ''}` : '';
-  const monthStr = months > 0 ? `${months} month${months > 1 ? 's' : ''}` : '';
+  const yearStr = years > 0
+    ? `${years} year${years > 1 ? 's' : ''}`
+    : '';
+
+  const monthStr = months > 0
+    ? `${months} month${months > 1 ? 's' : ''}`
+    : '';
+
   return [yearStr, monthStr].filter(Boolean).join(', ');
 };
 
@@ -155,7 +159,7 @@ const experiences = ref([
       {
         title: 'Senior - Software Developer',
         date: {
-          start: '2024-02-01',
+          start: '2025-02-01',
           end: null
         },
         description: 'Worked in a microservices environment, maintaining multiple services concurrently. Careful planning was essential when implementing new features, as changes often required coordinated updates across several interconnected services.' +
@@ -175,7 +179,7 @@ const experiences = ref([
         title: 'Intermediate - Software Developer',
         date: {
           start: '2023-08-01',
-          end: '2024-02-01'
+          end: '2025-02-01'
         },
         description: 'Worked as part of the Payment Services team on building and maintaining high-performance backend services that support internal platforms and user-facing payment flows.',
       },
