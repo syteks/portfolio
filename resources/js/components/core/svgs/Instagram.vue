@@ -1,11 +1,21 @@
 <script setup>
+const props = defineProps({
+  width: {
+    type: String,
+    default: '24px',
+  },
+  height: {
+    type: String,
+    default: '24px',
+  },
+});
 </script>
 
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="24px"
-    height="24px"
+    :width="props.width"
+    :height="props.height"
     viewBox="0 0 71 72"
     fill="none"
   >

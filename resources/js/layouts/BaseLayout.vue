@@ -1,19 +1,50 @@
 <script setup>
-  import Navbar from '@components/core/models/Navbar.vue';
+import Navbar from '@components/core/models/Navbar.vue';
+import PageLayout from '@/layouts/PageLayout.vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+
+// Reactive references to DOM elements
+const scrollContainerRef = ref(null);
+const isNavbarSolid = ref(false);
+const scrollThreshold = 20;
+
+const handleScroll = () => {
+  if (scrollContainerRef.value) {
+    isNavbarSolid.value = scrollContainerRef.value.scrollTop > scrollThreshold;
+  }
+};
+
+// Lifecycle hook: component mounted to DOM
+onMounted(() => {
+  if (scrollContainerRef.value) {
+    scrollContainerRef.value.addEventListener('scroll', handleScroll);
+  }
+});
+
+// Lifecycle hook: component about to be unmounted
+onBeforeUnmount(() => {
+  if (scrollContainerRef.value) {
+    scrollContainerRef.value.removeEventListener('scroll', handleScroll);
+  }
+});
 </script>
 
 <template>
-  <div id="container">
-    <header class="bg-gray-800 h-16 z-10 flex-no-wrap fixed top-0 w-full border-b-2 border-gray-600">
-      <Navbar>
-      </Navbar>
-      <slot name="header"></slot>
-    </header>
-    <main class="pt-16 relative bg-gray-800 w-full h-full">
-      <slot name="main"></slot>
-    </main>
-    <footer>
-      <slot name="footer"></slot>
-    </footer>
-  </div>
+  <PageLayout>
+    <div ref="scrollContainerRef" class="relative z-10 h-screen overflow-y-scroll snap-y snap-mandatory">
+      <header class="relative z-10">
+        <Navbar
+          :is-navbar-solid="isNavbarSolid"
+        />
+        <slot name="header"></slot>
+      </header>
+      <main class="w-full h-full">
+        <slot name="main"></slot>
+      </main>
+      <footer class="w-full h-full">
+        <slot name="footer"></slot>
+      </footer>
+    </div>
+  </PageLayout>
+
 </template>

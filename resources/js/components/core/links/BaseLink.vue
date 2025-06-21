@@ -1,7 +1,7 @@
 <script setup>
-  import { getDefaultProps } from '@composables/core/links/useLinks.js'
+import { getDefaultProps } from '@composables/core/links/useLinks.js';
 
-  const props = defineProps(getDefaultProps());
+const props = defineProps(getDefaultProps());
 </script>
 
 <template>
