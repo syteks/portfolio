@@ -8,6 +8,7 @@ import SocialMedia from '@components/core/models/SocialMedia.vue';
 import ColoredTitle from '@components/core/elements/ColoredTitle.vue';
 import ColoredSeparator from '@components/core/elements/ColoredSeparator.vue';
 import ExperienceBox from '@components/core/elements/ExperienceBox.vue';
+import Footer from '@/pages/Footer.vue';
 </script>
 
 <template>
@@ -54,8 +55,7 @@ import ExperienceBox from '@components/core/elements/ExperienceBox.vue';
       <Skills></Skills>
       <Experience></Experience>
       <Projects></Projects>
-
+      <Footer/>
     </template>
-
   </BaseLayout>
 </template>

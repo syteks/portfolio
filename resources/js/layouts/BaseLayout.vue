@@ -41,11 +41,10 @@ onBeforeUnmount(() => {
       <main class="w-full h-full">
         <slot name="main"></slot>
       </main>
-      <footer>
+      <footer class="w-full h-full">
         <slot name="footer"></slot>
       </footer>
     </div>
-
   </PageLayout>
 
 </template>

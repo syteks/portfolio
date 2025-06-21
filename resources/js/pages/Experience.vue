@@ -454,6 +454,7 @@ const selectExperience = (experience) => {
   animation: pop-in 0.3s ease-out forwards;
 }
 </style>
+
 <template>
   <section id="skills_page" class="p-4 sm:p-0 min-h-screen w-full">
     <div class="w-full text-white min-h-screen p-4 sm:p-6 lg:p-8">

@@ -45,6 +45,7 @@ import DataGrip from '@components/core/svgs/skills/DataGrip.vue';
 import PHPUnit from '@components/core/svgs/skills/PHPUnit.vue';
 import Pinia from '@components/core/svgs/skills/Pinia.vue';
 import OpsGenie from '@components/core/svgs/skills/OpsGenie.vue';
+import Kubernetes from '@components/core/svgs/skills/Kubernetes.vue';
 
 const selectedSkill = ref(null);
 const progressBarWidth = ref('0%');
@@ -128,7 +129,6 @@ const skills = shallowRef([
       { title: 'BitBucket', level: 90, icon: BitBucket },
       { title: 'GitHub', level: 90, icon: GitHub },
       { title: 'GitLab', level: 90, icon: GitLab },
-      { title: 'DataGrip', level: 90, icon: DataGrip },
       { title: 'OpsGenie', level: 80, icon: OpsGenie },
       { title: 'Pinia', level: 80, icon: Pinia },
       { title: 'Linux', level: 80, icon: Linux },
@@ -139,7 +139,7 @@ const skills = shallowRef([
       { title: 'Docker', level: 70, icon: Docker },
       { title: 'Visual Studio Code', level: 60, icon: VisualStudioCode },
       { title: 'Confluence', level: 60, icon: Confluence },
-      { title: 'OpenSuse', level: 60, icon: OpenSuse },
+      { title: 'Kubernetes', level: 50, icon: Kubernetes },
     ],
   },
 ]);

@@ -1,81 +1,179 @@
 <script setup>
-const projects = [
+import { ref, onMounted, onUnmounted } from 'vue';
+import ColoredTitle from '@components/core/elements/ColoredTitle.vue';
+
+const projects = ref([
   {
-    projectURL: 'https://github.com/syteks/FlavorGuardianBot',
-    imageName: 'FlavorGuardian.png',
-    projectTitle: 'FlavorGuardian - TypeScript Discord Bot',
-    projectDescription: 'Developed a Discord bot in TypeScript to facilitate sharing YouTube videos and playing music in voice channels, acting as a "Jukebox" for friends. This project served as a hands-on learning experience with TypeScript, enhancing programming skills through practical application. While currently not maintained due to time constraints, the development process provided valuable experience in bot creation and TypeScript.',
+    title: 'FlavorGuardianBot',
+    description: 'This project allowed me to deepen my understanding of TypeScript by developing a Discord bot capable of playing music and triggering specific audio clips in response to custom commands. Intended primarily for personal entertainment, the bot functioned as a soundboard, often used among friends during casual Discord sessions to play modern memes and share a laugh.',
+    tech: ['TypeScript', 'NodeJS', 'MongoDB'],
+    image: 'images/flavorGuardian.jpg',
+    link: 'https://github.com/syteks/FlavorGuardianBot',
   },
   {
-    projectURL: 'https://github.com/syteks/goat',
-    imageName: 'Goat.png',
-    projectTitle: 'GOAT - GoLang Discord Bot',
-    projectDescription: 'Developed a Reddit Meme Bot using GoLang to programmatically fetch memes from Reddit. This project was initiated out of personal interest and a desire to gain hands-on experience with GoLang, focusing on practical application in a self-directed learning environment.',
+    title: 'GOAT',
+    description: 'Developed in Go, this project was primarily an exploration of the Reddit API and served as a fun experiment in building a bot capable of fetching memes from any subreddit of choice. Designed for personal use, the bot was created to easily retrieve and share memes with friends—perfect for moments when we wanted a quick laugh without scrolling through Reddit manually.',
+    tech: ['GoLang', 'Reddit API'],
+    image: 'images/goat.jpg',
+    link: 'https://github.com/syteks/goat',
   },
   {
-    projectURL: 'https://github.com/syteks/portfolio',
-    imageName: 'Portfolio.png',
-    projectTitle: 'Portfolio - (PHP & Vue.js & TailwindCSS)',
-    projectDescription: 'Developed a web-based platform using PHP for the backend and Vue.js for the frontend, leveraging a strong preference for these languages in web development. As a backend developer, I utilized resources like Google and Gemini to explore diverse design styles and apply accumulated knowledge to the project. The current focus is on the Vue.js frontend, with future plans to implement an admin panel to enable dynamic content updates, moving away from hardcoded content.',
+    title: 'Portfolio',
+    description: 'This project is built using PHP, Vue, Vite, and TailwindCSS. At its current stage, it is primarily a front-facing application without a functional back end. However, numerous features are planned to enhance the management and scalability of the portfolio. Future updates will include an administrative panel that allows for seamless input and updates of all portfolio content.',
+    tech: ['PHP', 'Vue 3', 'Vite', 'Tailwind CSS'],
+    image: 'images/portfolio.jpg',
+    link: 'https://github.com/syteks/portfolio',
   },
-];
+]);
+
+// Color mapping for technology pills
+const techColors = {
+  'TypeScript': 'bg-blue-500 text-white',
+  'NodeJS': 'bg-green-600 text-white',
+  'MongoDB': 'bg-green-800 text-white',
+  'GoLang': 'bg-cyan-500 text-white',
+  'Reddit API': 'bg-orange-500 text-white',
+  'PHP': 'bg-indigo-500 text-white',
+  'Vue 3': 'bg-emerald-500 text-white',
+  'Vite': 'bg-purple-600 text-white',
+  'Tailwind CSS': 'bg-sky-500 text-white',
+};
+
+const animatedElements = ref(new Set());
+let observer;
+
+const setupObserver = () => {
+  if (observer) {
+    observer.disconnect();
+  }
+
+  const options = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px',
+  };
+  // Observe when the content comes in view to animate.
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const key = entry.target.dataset.animKey;
+
+        if (key) {
+          animatedElements.value.add(key);
+        }
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, options);
+
+  document.querySelectorAll('.animatable').forEach(el => {
+    observer.observe(el);
+  });
+};
+
+/**
+ * Set up the observer when we mount.
+ */
+onMounted(() => {
+  setupObserver();
+});
+
+/**
+ * Destroy the observer when the component unmounts.
+ */
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
+  }
+});
+
 </script>
+
+<style scoped>
+.animatable {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animatable.start-animation {
+  opacity: 1;
+  transform: translateY(0);
+  animation-name: fall-in;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  animation-delay: var(--delay, 0s);
+}
+</style>
+
 <template>
-  <section id="projects_page">
-    <div class="pt-24 p-8 md:pl-0 sticky min-h-screen py-8 text-white">
-      <div class="flex justify-center flex-col md:flex-row">
-        <div
-          v-for="project in projects"
-          class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mx-4 mb-4"
-        >
-          <a
-            :href="project.projectURL"
-            target="_blank"
+  <section id="skills_page" class="p-4 sm:p-0 min-h-screen w-full">
+    <div class="w-full text-white min-h-screen p-4 sm:p-6 lg:p-8">
+      <div class="max-w-7xl mx-auto">
+        <ColoredTitle
+          class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-12 sm:mb-16"
+          title="My Projects"
+          :enable-glow="true"
+        />
+        <div class="space-y-16">
+          <div
+            v-for="(project, index) in projects"
+            :key="project.title"
+            class="animatable grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
+            :class="{ 'start-animation': animatedElements.has(project.title) }"
+            :data-anim-key="project.title"
+            :style="{ 'transition-delay': `${index * 200}ms` }"
           >
-            <img
-              class="rounded-t-lg"
-              :src="'/images/' + project.imageName" alt=""
-            />
-          </a>
-          <div class="p-5">
-            <a
-              :href="project.projectURL"
-              target="_blank"
-            >
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {{ project.projectTitle }}
-              </h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-white">
-              {{ project.projectDescription }}
-            </p>
-            <a
-              :href="project.projectURL"
-              target="_blank"
-              class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Show me the code
-              <svg
-                class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
+            <div :class="index % 2 === 0 ? 'md:order-1' : 'md:order-2'">
+              <img :src="project.image" :alt="project.title" class="rounded-lg shadow-2xl w-full h-auto object-cover"/>
+            </div>
+
+            <div :class="index % 2 === 0 ? 'md:order-2' : 'md:order-1'">
+              <h2 class="text-3xl font-bold text-yellow-400 mb-3">{{ project.title }}</h2>
+              <p class="text-gray-300 mb-6 text-base leading-relaxed">
+                {{ project.description }}
+              </p>
+
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold text-white mb-3">Tech Stack:</h3>
+                <div class="flex flex-wrap gap-2">
+                <span
+                  v-for="tech in project.tech"
+                  :key="tech"
+                  class="px-3 py-1 rounded-full text-sm font-semibold"
+                  :class="[techColors[tech] || 'bg-gray-700 text-gray-200']"
+                >
+                  {{ tech }}
+                </span>
+                </div>
+              </div>
+
+              <a
+                :href="project.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 text-gray-900 font-bold rounded-lg transition-all duration-300 hover:bg-yellow-300 hover:shadow-lg"
               >
-                <path
+                <span>Go to Code</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
                   stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </a>
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
   </section>
 </template>
-
