@@ -33,7 +33,7 @@ let observer = null;
 
 onMounted(() => {
   const options = {
-    threshold: 0.4,
+    threshold: 0.3,
     rootMargin: '0px 0px -50px 0px',
   };
 
@@ -97,7 +97,7 @@ const quotes = [
       <div
         class="text-center mb-12 animatable"
         :class="{ 'start-animation': animatedElements.has('title-section') }"
-        :style="{ '--delay': `${0.4 + index * 0.2}s` }"
+        :style="{ '--delay': '0.2s' }"
         data-anim-key="title-section"
       >
         <ColoredTitle
@@ -112,11 +112,11 @@ const quotes = [
       <!-- Journey Items Section -->
       <div class="space-y-12">
         <div
-          v-for="journey in myJourneyContent"
+          v-for="(journey, index) in myJourneyContent"
           :key="journey.title"
           class="flex flex-col md:flex-row justify-center items-center gap-6 animatable p-4 rounded-lg transition-all duration-300 text-gray-100 hover:text-yellow-400 dark:text-white hover:bg-gray-500/20 hover:shadow-lg transform hover:-translate-y-1"
           :class="{ 'start-animation': animatedElements.has(journey.title) }"
-          style="--delay: 0.1s"
+          :style="{ '--delay': `${0.4 + index * 0.2}s` }"
           :data-anim-key="journey.title"
         >
           <!-- Icon (replaces the icon from your <AboutMeJourney> component) -->
