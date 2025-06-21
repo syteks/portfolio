@@ -107,7 +107,7 @@ onUnmounted(() => {
 </style>
 
 <template>
-  <section id="skills_page" class="p-4 sm:p-0 min-h-screen w-full">
+  <section id="projects_page" class="p-4 sm:p-0 min-h-screen w-full">
     <div class="w-full text-white min-h-screen p-4 sm:p-6 lg:p-8">
       <div class="max-w-7xl mx-auto">
         <ColoredTitle
