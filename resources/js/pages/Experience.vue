@@ -404,57 +404,6 @@ const selectExperience = (experience) => {
 
 </script>
 
-<style scoped>
-@keyframes draw-line {
-  from {
-    transform: scaleY(0);
-    opacity: 0;
-  }
-  to {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-}
-
-@keyframes pop-in {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* A simple utility for hiding the scrollbar on the tabs for mobile */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Animation for the timeline container */
-.timeline-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -1px;
-  height: 100%;
-  width: 2px;
-  background-color: #374151;
-  transform-origin: top;
-  animation: draw-line 1s 0.2s ease-out forwards;
-  opacity: 0;
-}
-
-/* Animation for the timeline dots */
-.timeline-dot {
-  opacity: 0;
-  transform: scale(0);
-  animation: pop-in 0.3s ease-out forwards;
-}
-</style>
-
 <template>
   <section id="experience_page" class="p-4 sm:p-0 min-h-screen w-full">
     <div class="w-full text-white min-h-screen p-4 sm:p-6 lg:p-8">
@@ -496,14 +445,14 @@ const selectExperience = (experience) => {
                 </h2>
                 <Link/>
               </a>
-              <div class="relative timeline-container">
+              <div class="relative timeline-container before:animate-draw-line">
                 <div
                   v-for="(job, index) in selectedExperience.jobExperiences"
                   :key="job.title"
                   class="mb-10 pl-8 animate-fall-in opacity-0"
                   :style="{ 'animation-delay': `${index * 200}ms`, 'animation-fill-mode': 'forwards' }"
                 >
-                  <div class="timeline-dot absolute -left-[9px] top-1 h-5 w-5 rounded-full bg-yellow-400 border-4 border-gray-900"></div>
+                  <div class="animate-pop-in absolute -left-[9px] top-1 h-5 w-5 rounded-full bg-yellow-400 border-4 border-gray-900"></div>
                   <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-1">
                     <h3 class="text-lg sm:text-xl font-semibold text-white">{{ job.title }}</h3>
                     <p class="text-sm text-yellow-400 mt-1 sm:mt-0">({{

@@ -87,3 +87,42 @@
 .falling-star-3 { top: -30px; left: 50%; }
 .falling-star-4 { top: -120px; left: 70%; }
 .falling-star-5 { top: -60px; left: 90%; }
+
+.animatable {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animatable.start-animation {
+    opacity: 1;
+    transform: translateY(0);
+    animation-name: fall-in;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+/* A simple utility for hiding the scrollbar on the tabs for mobile */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Animation for the timeline container */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -1px;
+    height: 100%;
+    width: 2px;
+    background-color: #374151;
+    transform-origin: top;
+    animation: draw-line 1s 0.2s ease-out forwards;
+    opacity: 0;
+}

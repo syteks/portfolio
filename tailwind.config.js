@@ -139,6 +139,8 @@ export default {
         'fade-in-left': 'fade-in-left 0.5s ease-out forwards',
         'fade-in-right': 'fade-in-right 0.5s ease-out forwards',
         'fall-in': 'fall-in 1s ease-out forwards',
+        'pop-in': 'pop-in 0.3s ease-out forwards',
+        'draw-line': 'draw-line 1s 0.2s ease-out forwards'
       },
     },
   },

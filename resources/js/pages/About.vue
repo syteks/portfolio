@@ -71,23 +71,6 @@ const quotes = [
 
 </script>
 
-<style scoped>
-
-
-.animatable {
-  opacity: 0;
-}
-
-.animatable.start-animation {
-  animation-name: fall-in;
-  animation-duration: 0.7s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-  animation-delay: var(--delay);
-}
-</style>
-
-
 <template>
   <section id="about_page" class="p-4 sm:p-0 min-h-screen w-full">
     <div
@@ -95,8 +78,8 @@ const quotes = [
       class="w-full max-w-4xl mx-auto p-6 sm:p-10 rounded-2xl"
     >
       <div
-        class="text-center mb-12 animatable"
-        :class="{ 'start-animation': animatedElements.has('title-section') }"
+        class="animatable text-center mb-12 opacity-0"
+        :class="{ 'animate-fall-in': animatedElements.has('title-section') }"
         :style="{ '--delay': '0.2s' }"
         data-anim-key="title-section"
       >
@@ -114,8 +97,8 @@ const quotes = [
         <div
           v-for="(journey, index) in myJourneyContent"
           :key="journey.title"
-          class="flex flex-col md:flex-row justify-center items-center gap-6 animatable p-4 rounded-lg transition-all duration-300 text-gray-100 hover:text-yellow-400 dark:text-white hover:bg-gray-500/20 hover:shadow-lg transform hover:-translate-y-1"
-          :class="{ 'start-animation': animatedElements.has(journey.title) }"
+          class="animatable flex flex-col md:flex-row justify-center items-center gap-6 opacity-0 p-4 rounded-lg transition-all duration-300 text-gray-100 hover:text-yellow-400 dark:text-white hover:bg-gray-500/20 hover:shadow-lg transform hover:-translate-y-1"
+          :class="{ 'animate-fall-in': animatedElements.has(journey.title) }"
           :style="{ '--delay': `${0.4 + index * 0.2}s` }"
           :data-anim-key="journey.title"
         >

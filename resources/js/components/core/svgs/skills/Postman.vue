@@ -1,12 +1,7 @@
 <script setup>
 
 </script>
-<style scoped>
-.C {
-  fill: #ff6c37
-}
 
-</style>
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"

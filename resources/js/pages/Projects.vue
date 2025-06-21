@@ -89,23 +89,6 @@ onUnmounted(() => {
 
 </script>
 
-<style scoped>
-.animatable {
-  opacity: 0;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.animatable.start-animation {
-  opacity: 1;
-  transform: translateY(0);
-  animation-name: fall-in;
-  animation-duration: 0.6s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-  animation-delay: var(--delay, 0s);
-}
-</style>
-
 <template>
   <section id="projects_page" class="p-4 sm:p-0 min-h-screen w-full">
     <div class="w-full text-white min-h-screen p-4 sm:p-6 lg:p-8">
