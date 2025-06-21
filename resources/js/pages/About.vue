@@ -33,7 +33,7 @@ let observer = null;
 
 onMounted(() => {
   const options = {
-    threshold: 0.1,
+    threshold: 0.4,
     rootMargin: '0px 0px -50px 0px',
   };
 
@@ -97,7 +97,7 @@ const quotes = [
       <div
         class="text-center mb-12 animatable"
         :class="{ 'start-animation': animatedElements.has('title-section') }"
-        :style="{ '--delay': '0.2s' }"
+        :style="{ '--delay': `${0.4 + index * 0.2}s` }"
         data-anim-key="title-section"
       >
         <ColoredTitle
