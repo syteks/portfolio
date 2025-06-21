@@ -1,28 +1,6 @@
 <script setup>
 </script>
 
-<style scoped>
-.st0 {
-  fill: url(#SVGID_1_)
-}
-
-.st1 {
-  fill: url(#SVGID_2_)
-}
-
-.st2 {
-  fill: url(#SVGID_3_)
-}
-
-.st3 {
-  fill: url(#SVGID_4_)
-}
-
-.st4 {
-  fill: #fff
-}
-</style>
-
 <template>
   <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" width="2500" height="2500">
     <linearGradient
@@ -39,7 +17,7 @@
       <stop offset=".758" stop-color="#fa3293"/>
       <stop offset=".941" stop-color="#ff318c"/>
     </linearGradient>
-    <path class="st0" d="M39.6 15.2l-3.3-10L11.9 0 0 13.5l37.2 19z"/>
+    <path fill="url(#SVGID_1_)" d="M39.6 15.2l-3.3-10L11.9 0 0 13.5l37.2 19z"/>
     <linearGradient
       id="SVGID_2_"
       gradientUnits="userSpaceOnUse"
@@ -54,7 +32,7 @@
       <stop offset=".758" stop-color="#fa3293"/>
       <stop offset=".941" stop-color="#ff318c"/>
     </linearGradient>
-    <path class="st1" d="M28 41.4l-.7-20.8L0 13.5l6.7 40.1 21.3-.2z"/>
+    <path fill="url(#SVGID_2_)" d="M28 41.4l-.7-20.8L0 13.5l6.7 40.1 21.3-.2z"/>
     <linearGradient
       id="SVGID_3_"
       gradientUnits="userSpaceOnUse"
@@ -70,7 +48,7 @@
       <stop offset=".443" stop-color="#ae47f2"/>
       <stop offset=".522" stop-color="#b345f1"/>
     </linearGradient>
-    <path class="st2" d="M22.1 41l1.3-16.5L43.2 4.2l17.7 3.2L70 30.1l-9.5 9.4L45 37l-9.6 10.1z"/>
+    <path fill="url(#SVGID_3_)" d="M22.1 41l1.3-16.5L43.2 4.2l17.7 3.2L70 30.1l-9.5 9.4L45 37l-9.6 10.1z"/>
     <linearGradient
       id="SVGID_4_"
       gradientUnits="userSpaceOnUse"
@@ -83,11 +61,11 @@
       <stop offset=".016" stop-color="#765af8"/>
       <stop offset=".382" stop-color="#b345f1"/>
     </linearGradient>
-    <path class="st3" d="M43.2 4.2L14.8 29.4l5.5 32.4L43.9 70 70 54.4z"/>
+    <path fill="url(#SVGID_4_)" d="M43.2 4.2L14.8 29.4l5.5 32.4L43.9 70 70 54.4z"/>
     <g>
       <path d="M13.4 13.4h43.2v43.2H13.4z"/>
       <path
-        class="st4"
+        fill="#fff"
         d="M17.5 48.5h16.2v2.7H17.5zM17.3 19h7.3c4.3 0 6.9 2.5 6.9 6.2v.1c0 4.2-3.2 6.3-7.3 6.3h-3V37h-3.9V19zm7.1 9c2 0 3.1-1.2 3.1-2.7v-.1c0-1.8-1.2-2.7-3.2-2.7h-3V28h3.1zM32.5 34.4l2.3-2.8c1.6 1.3 3.3 2.2 5.4 2.2 1.6 0 2.6-.6 2.6-1.7V32c0-1-.6-1.5-3.6-2.3-3.6-.9-6-1.9-6-5.5v-.1c0-3.3 2.6-5.4 6.3-5.4 2.6 0 4.9.8 6.7 2.3l-2.1 3c-1.6-1.1-3.2-1.8-4.7-1.8s-2.3.7-2.3 1.6v.1c0 1.2.8 1.6 3.9 2.4 3.6 1 5.7 2.3 5.7 5.4v.1c0 3.6-2.7 5.6-6.6 5.6-2.7-.1-5.4-1.1-7.6-3"
       />
     </g>
