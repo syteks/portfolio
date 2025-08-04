@@ -4,7 +4,6 @@ import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
 
 const javascriptDefaultDirectory = '/resources/js';
-
 export default defineConfig({
     server: {
         hmr: {
