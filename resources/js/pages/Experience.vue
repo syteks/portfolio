@@ -159,7 +159,7 @@ const experiences = ref([
       {
         title: 'Senior - Software Developer',
         date: {
-          start: '2025-02-01',
+          start: '02/01/2025',
           end: null
         },
         description: 'Worked in a microservices environment, maintaining multiple services concurrently. Careful planning was essential when implementing new features, as changes often required coordinated updates across several interconnected services.' +
@@ -178,8 +178,8 @@ const experiences = ref([
       {
         title: 'Intermediate - Software Developer',
         date: {
-          start: '2023-08-01',
-          end: '2025-02-01'
+          start: '08/01/2023',
+          end: '01/01/2025'
         },
         description: 'Worked as part of the Payment Services team on building and maintaining high-performance backend services that support internal platforms and user-facing payment flows.',
       },
@@ -238,8 +238,8 @@ const experiences = ref([
       {
         title: 'Junior - Backend Developer',
         date: {
-          start: '2020-11-01',
-          end: '2023-07-01'
+          start: '11/01/2020',
+          end: '07/01/2023'
         },
         description: 'Specialized in backend development of ERP platforms, helping clients digitalize and streamline their daily business operations.',
         responsibilities: [
@@ -286,8 +286,8 @@ const experiences = ref([
       {
         title: 'Junior - Web Developer',
         date: {
-          start: '2020-7-1',
-          end: '2020-11-1',
+          start: '07/01/2020',
+          end: '11/01/2020',
         },
         description: 'Implemented new features and enhancements for Spordle\'s suite of web services supporting sports organizations and leagues.',
         responsibilities: [
@@ -300,8 +300,8 @@ const experiences = ref([
       {
         title: 'Internship - Web Developer',
         date: {
-          start: '2020-1-1',
-          end: '2020-4-1',
+          start: '01/01/2020',
+          end: '04/01/2020',
         },
         description: 'As an intern at Spordle, I worked on a variety of projects and tasks, including: developing and maintaining internal and external web applications, implementing new features and enhancements, and resolving bugs and optimizing code for performance.',
       },
@@ -330,8 +330,8 @@ const experiences = ref([
       {
         title: 'Internship - Web Developer',
         date: {
-          start: '2019-6-1',
-          end: '2019-8-1',
+          start: '06/01/2019',
+          end: '08/01/2019',
         },
         description: 'As a Web Developer Intern at Polygon, I supported the development and maintenance of internal and external web applications focused on enhancing user experience and system functionality. Working closely with senior developers and cross-functional teams, I contributed to a variety of front-end and back-end tasks, while gaining hands-on experience with modern development tools and best practices.',
         responsibilities: [
