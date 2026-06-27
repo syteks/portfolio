@@ -1,0 +1,192 @@
+{
+  "hero": {
+    "roles": [
+      "Senior Backend Developer",
+      "API & Microservices Engineer",
+      "Payments & Systems Developer",
+      "Problem Solver"
+    ],
+    "bio": "Backend-focused engineer who enjoys the puzzles behind the product: clean architecture, reliable APIs, and systems that scale.",
+    "years": "years",
+    "experience": "experience"
+  },
+  "sections": {
+    "about": "My Journey",
+    "skills": "Skills & Technologies",
+    "experience": "Professional Experience",
+    "profile": "Education & Profile"
+  },
+  "about": {
+    "intro": "From a teenager obsessed with how things worked to a backend engineer who lives for the puzzle behind the product.",
+    "journey": [
+      {
+        "title": "The Spark",
+        "era": "age 16",
+        "description": "It started at 16 with pure curiosity and an obsession with tutorials — I needed to know how my favourite websites and games were actually built. That itch to look under the hood quickly turned into a lifelong drive to create digital things from scratch.",
+        "tags": ["curiosity", "tutorials", "the web"]
+      },
+      {
+        "title": "Learning the Craft",
+        "era": "age 18",
+        "description": "By 18 the curiosity had become code. Building my first projects in PHP and C++, I realised the part I loved wasn't the finished screen — it was the puzzle behind it. The logic, the data flow, the architecture. That's where backend development quietly became home.",
+        "tags": ["PHP", "C++", "first projects"]
+      },
+      {
+        "title": "Professional Growth",
+        "era": "2019 → today",
+        "description": "In the working world my skills grew past syntax into the whole lifecycle — planning, risk, code quality, and shipping reliable systems at scale. PHP is my specialty, but I move comfortably across JS/TS, C#, Go and more, gravitating to payments and high-throughput services.",
+        "tags": ["architecture", "APIs", "scale", "payments"]
+      },
+      {
+        "title": "Going Deeper",
+        "era": "self-taught",
+        "description": "Outside the day job I taught myself the systems side of the craft — containerising apps with Docker, orchestrating them on Kubernetes, and splitting monoliths into clean microservices. I went deep on data too: warehouses for analytics and serious database optimisation to keep queries fast and cheap.",
+        "tags": ["Docker", "Kubernetes", "microservices", "data warehouses", "DB optimization"]
+      },
+      {
+        "title": "Always Learning",
+        "era": "ongoing",
+        "description": "I'm pursuing a Computer Science degree at Université Laval in parallel with my career — a few courses each semester, after hours. It's not about the title; it's about sharpening the fundamentals and staying curious. The 16-year-old chasing tutorials never really left.",
+        "tags": ["CS degree", "after-hours", "fundamentals"]
+      }
+    ]
+  },
+  "skills": {
+    "items": "items",
+    "categories": {
+      "languages": "Languages",
+      "databases": "Databases",
+      "frameworks": "Frameworks",
+      "ai": "AI Tools",
+      "tools": "Tools"
+    }
+  },
+  "experience": {
+    "present": "Present",
+    "companies": {
+      "aylo": {
+        "roles": [
+          {
+            "title": "Senior Software Developer",
+            "description": "Worked in a microservices environment, maintaining multiple services concurrently. New features required careful, coordinated changes across interconnected services, and close collaboration with cross-functional teams to ship reliably.",
+            "responsibilities": [
+              "Designed and implemented robust APIs and integrated third-party services.",
+              "Managed CI/CD pipelines and upheld code quality through reviews and testing.",
+              "Developed and optimized payment processing features and microservices.",
+              "Integrated third-party payment gateways with security compliance (e.g. PCI-DSS).",
+              "Built core payment infrastructure with a focus on scalability and reliability.",
+              "Monitored and resolved production issues across payment workflows."
+            ]
+          },
+          {
+            "title": "Intermediate Software Developer",
+            "description": "Part of the Payment Services team, building and maintaining high-performance backend services supporting internal platforms and user-facing payment flows."
+          }
+        ]
+      },
+      "tolle": {
+        "roles": [
+          {
+            "title": "Junior Backend Developer",
+            "description": "Specialized in backend development of ERP platforms, helping clients digitalize and streamline their daily business operations.",
+            "responsibilities": [
+              "Designed and built custom ERP modules tailored to client needs.",
+              "Automated business processes: inventory, invoicing, and reporting.",
+              "Conducted code reviews and enforced backend development standards.",
+              "Worked closely with clients to gather requirements and provide support."
+            ]
+          }
+        ]
+      },
+      "spordle": {
+        "roles": [
+          {
+            "title": "Junior Web Developer",
+            "description": "Implemented new features and enhancements for Spordle's suite of web services supporting sports organizations and leagues.",
+            "responsibilities": [
+              "Developed front-end and back-end features to improve platform functionality.",
+              "Built and maintained RESTful APIs for sports data management.",
+              "Collaborated with UI/UX teams to enhance user experience.",
+              "Resolved bugs and optimized code for performance."
+            ]
+          },
+          {
+            "title": "Web Developer Intern",
+            "description": "Developed and maintained internal and external web applications, implemented new features, and optimized code for performance."
+          }
+        ]
+      },
+      "polygon": {
+        "roles": [
+          {
+            "title": "Web Developer Intern",
+            "description": "Supported development and maintenance of internal and external web applications, working with senior developers across front-end and back-end tasks while learning modern tooling and best practices.",
+            "responsibilities": [
+              "Assisted in developing, testing, and debugging responsive web applications.",
+              "Collaborated with the design team to implement UI/UX improvements.",
+              "Participated in code reviews and agile development workflows."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "profile": {
+    "availability": "Open to opportunities",
+    "headings": {
+      "education": "education",
+      "languages": "languages",
+      "interests": "interests"
+    },
+    "main": "main",
+    "rows": {
+      "host": "host",
+      "location": "location",
+      "timezone": "timezone",
+      "status": "status"
+    },
+    "levels": {
+      "Native": "Native",
+      "Good": "Good",
+      "Intermediate": "Intermediate",
+      "Beginner": "Beginner"
+    },
+    "languageNames": {
+      "english": "English",
+      "french": "French",
+      "romanian": "Romanian",
+      "russian": "Russian",
+      "japanese": "Japanese"
+    },
+    "interests": {
+      "coding": "Coding",
+      "badminton": "Badminton",
+      "languages": "Learning new languages",
+      "gaming": "Gaming",
+      "hardware": "Tinkering with hardware",
+      "hiking": "Hiking",
+      "exploring": "Exploring",
+      "documentaries": "Documentaries"
+    }
+  },
+  "education": {
+    "schools": {
+      "laval": {
+        "credential": "Bachelor's degree, Computer Science",
+        "period": "Jul 2025 — Jul 2028",
+        "description": "Pursuing a part-time Bachelor's — three courses per semester, studied after work — to deepen my computer-science foundations and keep sharpening my skills. It runs entirely on my own time, so it complements my full-time role rather than competing with it."
+      },
+      "clg": {
+        "credential": "DEC, Computer Programming/Programmer, General",
+        "period": "2017 — 2020",
+        "description": "Built my core engineering foundation: raw coding skills, REST APIs, web CRUD apps and MVC architecture, game development, and server management. Worked across C++, C#, Java, PHP, JavaScript/TypeScript, Oracle, MySQL and SQL Server, plus mobile development — alongside project management in Agile/Scrum (sprints, planning poker)."
+      }
+    }
+  },
+  "contact": {
+    "headlinePre": "Let's build something",
+    "headlineAccent": "great",
+    "blurb": "Have a project in mind, a role to fill, or just want to talk shop? My inbox is always open — I'll get back to you.",
+    "elsewhere": "find me elsewhere"
+  }
+}

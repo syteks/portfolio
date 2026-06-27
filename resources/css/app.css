@@ -1,128 +1,384 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-/* Base styling for the starfield container */
-#starfield-background {
-    background-color: #0d0d0d; /* Changed to single background color */
-    overflow: hidden; /* Crucial to hide elements moving off-screen during animation [1] */
+@config '../../tailwind.config.js';
+
+/*
+  Tailwind v4 defaults the border color to `currentcolor`. We keep a subtle
+  dark default so any element using a bare `border` utility stays on-theme.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-slate-800, currentcolor);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family:
+      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background-color: var(--color-slate-950);
+    color: var(--color-slate-200);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Hovering plain text keeps the default arrow — no I-beam (overridden below
+       for genuinely interactive elements and real text inputs). */
+    cursor: default;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-emerald-400) 35%, transparent);
+    color: #fff;
+  }
+
+  /* Only genuinely interactive elements get the "this does something" pointer.
+     Non-interactive cards/fields keep the default cursor. */
+  button:not(:disabled),
+  [role='button'],
+  a[href],
+  label[for],
+  summary {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+
+  /* Real text-entry fields still get the text caret. */
+  input:not([type='button']):not([type='submit']):not([type='reset']):not(
+      [type='checkbox']
+    ):not([type='radio']):not([type='range']):not([type='color']),
+  textarea,
+  [contenteditable='true'] {
+    cursor: text;
+  }
+
+  /* Themed scrollbars (Firefox) */
+  html,
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-emerald-500) transparent;
+  }
 }
 
-/* Radial-gradient based stars for subtle movement and depth */
-.stars-layer-1 {
-    background-image:
-            radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0)); /* [2] */
-    background-repeat: repeat;
-    background-size: 200px 200px; /* Controls density and size of stars in this layer [2] */
+/* Themed scrollbars (WebKit/Chromium) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
 
-.stars-layer-2 {
-    background-image:
-            radial-gradient(1.5px 1.5px at 10px 100px, #ccc, rgba(0,0,0,0)),
-            radial-gradient(1.5px 1.5px at 70px 20px, #eee, rgba(0,0,0,0)),
-            radial-gradient(1.5px 1.5px at 110px 150px, #fff, rgba(0,0,0,0)); /* [2] */
-    background-repeat: repeat;
-    background-size: 150px 150px; /* Different density/size for depth [2] */
-    opacity: 0.7; /* Slightly less opaque */
+::-webkit-scrollbar-track {
+  background: #0b0f14;
 }
 
-.stars-layer-3 {
-    background-image:
-            radial-gradient(1px 1px at 50px 50px, #bbb, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 180px 10px, #ccc, rgba(0,0,0,0)); /* [2] */
-    background-repeat: repeat;
-    background-size: 100px 100px; /* Smallest stars, highest density [2] */
-    opacity: 0.5; /* Least opaque */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #34d399, #22d3ee);
+  border: 2px solid #0b0f14;
+  border-radius: 8px;
 }
 
-/* Box-shadow based stars for twinkling effect */
-/* In a real project, you'd use a CSS preprocessor (like SASS) or JavaScript
-   to generate a much larger, random set of box-shadows for a denser field.
-   This is a simplified example. */
-.twinkling-stars-small {
-    width: 1px;
-    height: 1px;
-    background: transparent; /* Only the shadows are visible */
-    box-shadow:
-            10px 10px white, 50px 80px white, 120px 30px white, 200px 150px white,
-            300px 70px white, 450px 20px white, 500px 100px white, 600px 40px white,
-            700px 180px white, 800px 90px white, 900px 10px white, 1000px 130px white,
-            1100px 60px white, 1200px 190px white, 1300px 25px white, 1400px 110px white,
-            1500px 5px white, 1600px 140px white, 1700px 75px white, 1800px 160px white,
-            1900px 30px white, 2000px 100px white, 2100px 50px white, 2200px 170px white,
-            2300px 80px white, 2400px 120px white, 2500px 15px white, 2600px 95px white,
-            2700px 185px white, 2800px 45px white, 2900px 135px white, 3000px 65px white; /* [3, 1] */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #6ee7b7, #67e8f9);
 }
 
-.twinkling-stars-medium {
-    width: 2px;
-    height: 2px;
-    background: transparent;
-    box-shadow:
-            30px 200px white, 150px 50px white, 280px 100px white, 400px 250px white,
-            550px 120px white, 700px 300px white, 850px 180px white, 1000px 20px white,
-            1150px 220px white, 1300px 80px white, 1450px 320px white, 1600px 140px white,
-            1750px 10px white, 1900px 280px white, 2050px 60px white, 2200px 200px white; /* [3, 1] */
-    opacity: 0.6;
+/* ----------------------------------------------------------------------------
+   Background textures (used by PageLayout)
+---------------------------------------------------------------------------- */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.6) 1px, transparent 1px);
+  background-size: 44px 44px;
 }
 
-/* Falling stars (previously shooting stars) */
-.falling-star {
-    position: absolute;
-    width: 100px; /* Length of the falling star */
-    height: 2px; /* Thickness of the falling star */
-    background: linear-gradient(180deg, white, transparent); /* White head fading downwards to transparent tail [1] */
-    transform-origin: 0% 50%; /* Ensures rotation happens from the head of the star */
-    opacity: 0; /* Hidden by default, animated to visible and then fades out [1] */
+.bg-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5) 0,
+    rgba(255, 255, 255, 0.5) 1px,
+    transparent 1px,
+    transparent 3px
+  );
 }
 
-/* Specific starting positions for falling stars (from top) */
-.falling-star-1 { top: -50px; left: 10%; }
-.falling-star-2 { top: -80px; left: 30%; }
-.falling-star-3 { top: -30px; left: 50%; }
-.falling-star-4 { top: -120px; left: 70%; }
-.falling-star-5 { top: -60px; left: 90%; }
+/* ----------------------------------------------------------------------------
+   "Compile" scroll reveal (paired with the v-reveal directive)
 
-.animatable {
-    opacity: 0;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+   Bespoke effect: instead of a plain fade, content renders in left-to-right via
+   a clip-path wipe + a small rise, as if the section is being compiled/painted.
+   clip-path & transform are GPU-friendly and don't reflow.
+---------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(6px);
+  transition:
+    opacity 0.55s ease-out,
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.6s ease-out;
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform, filter;
 }
 
-.animatable.start-animation {
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Reduced-motion variant: a calm opacity-only fade (no movement or blur). */
+.reveal-soft {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.reveal-soft.reveal-visible {
+  opacity: 1;
+}
+
+/* ----------------------------------------------------------------------------
+   "My Journey" sequential spotlight (driven by useSequentialHighlight)
+   Items fade in one at a time; the active one is highlighted (glow + scale via
+   utility classes) and the highlight moves down the list, then clears.
+---------------------------------------------------------------------------- */
+.journey-item {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.32s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.journey-item.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+.journey-card {
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Reduced-motion: keep the fade + highlight glow, drop the positional slide. */
+@media (prefers-reduced-motion: reduce) {
+  .journey-item {
+    transform: none;
+  }
+}
+
+/* "Compiled" underline that draws in beneath a section command heading. */
+.cmd-sweep {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.66, 0.04, 0.2, 1) 0.1s;
+}
+
+.reveal-visible .cmd-sweep {
+  transform: scaleX(1);
+}
+
+/* "built ✓" tag that fades in once the heading has compiled. */
+.cmd-done {
+  opacity: 0;
+  transition: opacity 0.4s ease-out 0.5s;
+}
+
+.reveal-visible .cmd-done {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
     opacity: 1;
-    transform: translateY(0);
-    animation-name: fall-in;
-    animation-duration: 0.6s;
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards;
-    animation-delay: var(--delay, 0s);
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+  .cmd-sweep {
+    transform: scaleX(1);
+    transition: none;
+  }
+  .cmd-done {
+    opacity: 1;
+    transition: none;
+  }
 }
 
-/* A simple utility for hiding the scrollbar on the tabs for mobile */
+/* ----------------------------------------------------------------------------
+   Utilities & transitions
+---------------------------------------------------------------------------- */
 .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Animation for the timeline container */
-.timeline-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -1px;
-    height: 100%;
-    width: 2px;
-    background-color: #374151;
-    transform-origin: top;
-    animation: draw-line 1s 0.2s ease-out forwards;
+/* Vue <transition name="fade"> used when switching experience tabs */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Vue <transition name="panel"> — Experience content swap on tab change */
+.panel-enter-active {
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.panel-leave-active {
+  transition: opacity 0.15s ease;
+}
+
+.panel-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.panel-leave-to {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-enter-from {
+    transform: none;
+  }
+}
+
+/* Vue <transition name="decl"> — rotating language declaration in Skills */
+.decl-enter-active,
+.decl-leave-active {
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  display: inline-block;
+}
+
+.decl-enter-from {
+  opacity: 0;
+  transform: translateY(-0.35em);
+}
+
+.decl-leave-to {
+  opacity: 0;
+  transform: translateY(0.35em);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .decl-enter-active,
+  .decl-leave-active {
+    transition: none;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Boot intro (BootScreen overlay → reveal of the nvim editor)
+
+   These live in the global sheet (not scoped to the SFC) so they are always
+   present in the single entry stylesheet — a scoped <style> got code-split into
+   a separate CSS chunk that the blade @vite tag never linked.
+---------------------------------------------------------------------------- */
+.boot-fedora {
+  background: #3c6eb4;
+  box-shadow: 0 0 0 2px #294172;
+}
+
+/* each boot line snaps in */
+.boot-line {
+  animation: boot-line-in 0.18s ease-out;
+}
+@keyframes boot-line-in {
+  from {
     opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Fedora-ish blue desktop wallpaper (opaque base so the editor can't show through) */
+.boot-wallpaper {
+  background-color: #11192b;
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(60, 110, 180, 0.55), transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(41, 65, 114, 0.7), transparent 55%),
+    linear-gradient(160deg, #2a4a7c 0%, #1a2740 55%, #11192b 100%);
+}
+
+.boot-term {
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.boot-term-out {
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
+}
+.boot-term-in {
+  opacity: 1;
+  transform: none;
+}
+
+.boot-caret {
+  animation: boot-blink 1s step-end infinite;
+  color: #7aa2f7;
+}
+@keyframes boot-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.boot-fade-leave-active {
+  transition: opacity 0.55s ease;
+}
+
+.boot-fade-leave-to {
+  opacity: 0;
+}
+
+/* The editor "pops" in as the boot overlay clears. */
+.editor-pop {
+  animation: editor-pop 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes editor-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-fade-leave-active {
+    transition: none;
+  }
+  .editor-pop {
+    animation: none;
+  }
 }

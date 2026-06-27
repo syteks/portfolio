@@ -1,7 +1,7 @@
 # -----------------------------------------------
 # Stage 1: Build frontend assets with Vite
 # -----------------------------------------------
-FROM node:20-alpine as node_builder
+FROM node:22-alpine as node_builder
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ RUN npm install && npm run build
 # -----------------------------------------------
 # Stage 2: Laravel + PHP Extensions + Composer
 # -----------------------------------------------
-FROM php:8.2-fpm
+FROM php:8.4-fpm
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \

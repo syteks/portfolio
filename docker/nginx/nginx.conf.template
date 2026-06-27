@@ -8,9 +8,9 @@ server {
     # Serve static assets from Vite's build directory
     location ~ ^/build/(.*)$ {
         alias /var/www/public/build/$1; # Assumes Vite builds to /var/www/public/build
-        expires 1y; # Cache static assets for a long time
+        expires 1y; # Vite output is content-hashed, so it can be cached forever
         access_log off;
-        add_header Cache-Control "public";
+        add_header Cache-Control "public, immutable";
     }
 
     location / {

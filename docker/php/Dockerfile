@@ -1,5 +1,11 @@
 # Set the base image for subsequent instructions
-FROM php:8.2-fpm
+FROM php:8.4-fpm
+
+# Align the container's www-data user with the host user so that bind-mounted
+# files (./:/var/www) are writable without a UID/GID mismatch.
+ARG UID=1000
+ARG GID=1000
+RUN usermod -u ${UID} www-data && groupmod -g ${GID} www-data
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -29,6 +35,10 @@ WORKDIR /var/www
 
 # Remove default server definition if it exists (common for some base images)
 RUN rm -rf /var/www/html
+
+# Mark the bind-mounted repo as a safe git directory to avoid the
+# "detected dubious ownership" warning when running git/composer inside.
+RUN git config --system --add safe.directory /var/www
 
 # Copy existing application directory contents into the container
 # This is the primary COPY command, setting appropriate permissions for www-data.

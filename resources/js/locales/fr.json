@@ -1,0 +1,192 @@
+{
+  "hero": {
+    "roles": [
+      "Développeur Backend Senior",
+      "Ingénieur API & Microservices",
+      "Développeur Paiements & Systèmes",
+      "Résolveur de Problèmes"
+    ],
+    "bio": "Ingénieur orienté backend qui aime les casse-têtes derrière le produit : une architecture propre, des API fiables et des systèmes qui passent à l'échelle.",
+    "years": "ans",
+    "experience": "d'expérience"
+  },
+  "sections": {
+    "about": "Mon Parcours",
+    "skills": "Compétences & Technologies",
+    "experience": "Expérience Professionnelle",
+    "profile": "Formation & Profil"
+  },
+  "about": {
+    "intro": "D'un adolescent obsédé par le fonctionnement des choses à un ingénieur backend qui vit pour le casse-tête derrière le produit.",
+    "journey": [
+      {
+        "title": "L'Étincelle",
+        "era": "à 16 ans",
+        "description": "Tout a commencé à 16 ans par pure curiosité et une obsession pour les tutoriels — je devais savoir comment mes sites et jeux préférés étaient réellement construits. Cette envie de regarder sous le capot est vite devenue une passion durable : créer des choses numériques de zéro.",
+        "tags": ["curiosité", "tutoriels", "le web"]
+      },
+      {
+        "title": "Apprendre le Métier",
+        "era": "à 18 ans",
+        "description": "À 18 ans, la curiosité était devenue du code. En réalisant mes premiers projets en PHP et C++, j'ai compris que ce que j'aimais n'était pas l'écran final — c'était le casse-tête derrière. La logique, le flux de données, l'architecture. C'est là que le développement backend est discrètement devenu mon univers.",
+        "tags": ["PHP", "C++", "premiers projets"]
+      },
+      {
+        "title": "Croissance Professionnelle",
+        "era": "2019 → aujourd'hui",
+        "description": "Dans le monde professionnel, mes compétences ont dépassé la syntaxe pour embrasser tout le cycle de vie — planification, gestion du risque, qualité du code et livraison de systèmes fiables à grande échelle. PHP est ma spécialité, mais je navigue aisément entre JS/TS, C#, Go et plus, avec un penchant pour les paiements et les services à haut débit.",
+        "tags": ["architecture", "API", "échelle", "paiements"]
+      },
+      {
+        "title": "Aller Plus Loin",
+        "era": "autodidacte",
+        "description": "En dehors du travail, j'ai appris en autodidacte le versant systèmes du métier — conteneuriser des applications avec Docker, les orchestrer sur Kubernetes et découper des monolithes en microservices propres. Je me suis aussi plongé dans les données : entrepôts pour l'analytique et optimisation poussée des bases pour garder des requêtes rapides et économiques.",
+        "tags": ["Docker", "Kubernetes", "microservices", "entrepôts de données", "optimisation BD"]
+      },
+      {
+        "title": "Toujours Apprendre",
+        "era": "en cours",
+        "description": "Je poursuis un diplôme en informatique à l'Université Laval en parallèle de ma carrière — quelques cours par session, après le travail. Ce n'est pas une question de titre, mais d'affûter les fondamentaux et de rester curieux. L'ado de 16 ans qui dévorait les tutoriels n'est jamais vraiment parti.",
+        "tags": ["diplôme info", "après le travail", "fondamentaux"]
+      }
+    ]
+  },
+  "skills": {
+    "items": "éléments",
+    "categories": {
+      "languages": "Langages",
+      "databases": "Bases de données",
+      "frameworks": "Frameworks",
+      "ai": "Outils IA",
+      "tools": "Outils"
+    }
+  },
+  "experience": {
+    "present": "Présent",
+    "companies": {
+      "aylo": {
+        "roles": [
+          {
+            "title": "Développeur Logiciel Senior",
+            "description": "Travail dans un environnement microservices, en maintenant plusieurs services en parallèle. Les nouvelles fonctionnalités exigeaient des changements soigneux et coordonnés à travers des services interconnectés, ainsi qu'une collaboration étroite avec des équipes pluridisciplinaires pour livrer de façon fiable.",
+            "responsibilities": [
+              "Conception et implémentation d'API robustes et intégration de services tiers.",
+              "Gestion des pipelines CI/CD et maintien de la qualité du code par les revues et les tests.",
+              "Développement et optimisation de fonctionnalités de traitement des paiements et de microservices.",
+              "Intégration de passerelles de paiement tierces dans le respect des normes de sécurité (p. ex. PCI-DSS).",
+              "Construction de l'infrastructure de paiement centrale axée sur l'évolutivité et la fiabilité.",
+              "Surveillance et résolution des incidents en production sur les flux de paiement."
+            ]
+          },
+          {
+            "title": "Développeur Logiciel Intermédiaire",
+            "description": "Membre de l'équipe Services de Paiement, à construire et maintenir des services backend hautes performances soutenant les plateformes internes et les parcours de paiement des utilisateurs."
+          }
+        ]
+      },
+      "tolle": {
+        "roles": [
+          {
+            "title": "Développeur Backend Junior",
+            "description": "Spécialisé dans le développement backend de plateformes ERP, aidant les clients à numériser et fluidifier leurs opérations quotidiennes.",
+            "responsibilities": [
+              "Conception et réalisation de modules ERP sur mesure adaptés aux besoins des clients.",
+              "Automatisation des processus métier : inventaire, facturation et rapports.",
+              "Réalisation de revues de code et application des standards de développement backend.",
+              "Collaboration étroite avec les clients pour recueillir les besoins et offrir du support."
+            ]
+          }
+        ]
+      },
+      "spordle": {
+        "roles": [
+          {
+            "title": "Développeur Web Junior",
+            "description": "Implémentation de nouvelles fonctionnalités et améliorations pour la suite de services web de Spordle, au service des organisations et ligues sportives.",
+            "responsibilities": [
+              "Développement de fonctionnalités front-end et back-end pour enrichir la plateforme.",
+              "Création et maintenance d'API RESTful pour la gestion des données sportives.",
+              "Collaboration avec les équipes UI/UX pour améliorer l'expérience utilisateur.",
+              "Résolution de bogues et optimisation du code pour la performance."
+            ]
+          },
+          {
+            "title": "Stagiaire Développeur Web",
+            "description": "Développement et maintenance d'applications web internes et externes, ajout de nouvelles fonctionnalités et optimisation du code pour la performance."
+          }
+        ]
+      },
+      "polygon": {
+        "roles": [
+          {
+            "title": "Stagiaire Développeur Web",
+            "description": "Appui au développement et à la maintenance d'applications web internes et externes, en travaillant avec des développeurs seniors sur des tâches front-end et back-end tout en apprenant les outils modernes et les bonnes pratiques.",
+            "responsibilities": [
+              "Participation au développement, aux tests et au débogage d'applications web responsives.",
+              "Collaboration avec l'équipe de design pour mettre en œuvre des améliorations UI/UX.",
+              "Participation aux revues de code et aux processus de développement agile."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "profile": {
+    "availability": "Ouvert aux opportunités",
+    "headings": {
+      "education": "formation",
+      "languages": "langues",
+      "interests": "intérêts"
+    },
+    "main": "principal",
+    "rows": {
+      "host": "hôte",
+      "location": "localisation",
+      "timezone": "fuseau",
+      "status": "statut"
+    },
+    "levels": {
+      "Native": "Natif",
+      "Good": "Courant",
+      "Intermediate": "Intermédiaire",
+      "Beginner": "Débutant"
+    },
+    "languageNames": {
+      "english": "Anglais",
+      "french": "Français",
+      "romanian": "Roumain",
+      "russian": "Russe",
+      "japanese": "Japonais"
+    },
+    "interests": {
+      "coding": "Programmation",
+      "badminton": "Badminton",
+      "languages": "Apprendre de nouvelles langues",
+      "gaming": "Jeux vidéo",
+      "hardware": "Bricolage matériel",
+      "hiking": "Randonnée",
+      "exploring": "Exploration",
+      "documentaries": "Documentaires"
+    }
+  },
+  "education": {
+    "schools": {
+      "laval": {
+        "credential": "Baccalauréat, Informatique",
+        "period": "juil. 2025 — juil. 2028",
+        "description": "Baccalauréat à temps partiel — trois cours par session, étudiés après le travail — pour approfondir mes bases en informatique et continuer d'affûter mes compétences. Il se déroule entièrement sur mon temps personnel, en complément de mon emploi à temps plein plutôt qu'en concurrence avec lui."
+      },
+      "clg": {
+        "credential": "DEC, Techniques de l'informatique",
+        "period": "2017 — 2020",
+        "description": "J'y ai bâti mes fondations d'ingénierie : compétences de programmation, API REST, applications web CRUD et architecture MVC, développement de jeux et gestion de serveurs. J'ai travaillé avec C++, C#, Java, PHP, JavaScript/TypeScript, Oracle, MySQL et SQL Server, en plus du développement mobile — le tout avec de la gestion de projet en Agile/Scrum (sprints, planning poker)."
+      }
+    }
+  },
+  "contact": {
+    "headlinePre": "Créons quelque chose",
+    "headlineAccent": "d'exceptionnel",
+    "blurb": "Un projet en tête, un poste à pourvoir, ou simplement envie de discuter ? Ma boîte de réception est toujours ouverte — je vous répondrai.",
+    "elsewhere": "me retrouver ailleurs"
+  }
+}

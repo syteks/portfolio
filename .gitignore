@@ -17,3 +17,8 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Local tooling / shell caches (not for the repo)
+/.composer
+/.claude
+/.bash_history

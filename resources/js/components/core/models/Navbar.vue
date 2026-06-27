@@ -1,81 +1,46 @@
 <script setup>
-  import ButtonLink from '@components/core/links/ButtonLink.vue';
-  import SocialMedia from '@components/core/models/SocialMedia.vue';
-  import BaseLink from '@components/core/links/BaseLink.vue';
-  import ColoredTitle from '@components/core/elements/ColoredTitle.vue';
-  import { defineProps } from 'vue';
+import { profile } from '@/data/profile';
+import { navItems } from '@/data/navigation';
+import SocialLinks from '@components/ui/SocialLinks.vue';
 
-  const props = defineProps({
-    isNavbarSolid: {
-      type: Boolean,
-      default: false
-    }
-  });
+defineProps({
+  isNavbarSolid: {
+    type: Boolean,
+    default: false,
+  },
+});
 </script>
 
 <template>
   <nav
-    :class="props.isNavbarSolid ? 'bg-opacity-40' : 'bg-opacity-0'"
-    class="bg-black  shadow-lg  fixed top-0 left-0 right-0 z-50 w-full"
+    class="fixed inset-x-0 top-0 z-50 transition-colors duration-300"
+    :class="
+      isNavbarSolid
+        ? 'border-b border-white/10 bg-slate-950/80 backdrop-blur'
+        : 'border-b border-transparent bg-transparent'
+    "
   >
-    <div class="container mx-auto flex items-center justify-center lg:justify-around">
-      <div class="hidden sm:flex space-x-2">
-        <BaseLink
-          class="justify-center items-center"
-          rel="noopener"
-          target="_self"
-          aria-current="page"
-          href="#home_page"
+    <div class="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <a href="#home" class="shrink-0 font-mono text-sm">
+        <span class="text-emerald-400">{{ profile.handle }}</span>
+        <span class="hidden text-slate-500 sm:inline">@</span>
+        <span class="hidden text-slate-300 sm:inline">{{ profile.host }}</span>
+        <span class="text-slate-500">:~$</span>
+      </a>
+
+      <div class="flex items-center gap-1 overflow-x-auto font-mono text-sm scrollbar-hide">
+        <a
+          v-for="item in navItems"
+          :key="item.href"
+          :href="item.href"
+          class="shrink-0 rounded-md px-3 py-1.5 text-slate-400 transition-colors duration-200 hover:bg-white/5 hover:text-emerald-400"
         >
-          <ColoredTitle
-            :title="'SGT'"
-            class="text-2xl"
-          />
-        </BaseLink>
+          {{ item.command }}
+        </a>
       </div>
-      <div class="sm:block">
-        <div class="flex space-x-2">
-          <ButtonLink
-            class="px-3 py-2 text-sm sm:text-md"
-            rel="noopener"
-            target="_self"
-            aria-current="page"
-            href="#about_page"
-          >
-            About
-          </ButtonLink>
-          <ButtonLink
-            class="px-3 py-2 text-sm sm:text-md"
-            rel="noopener"
-            target="_self"
-            aria-current="page"
-            href="#skills_page"
-          >
-            Skills
-          </ButtonLink>
-          <ButtonLink
-            class="px-3 py-2 text-sm sm:text-md"
-            rel="noopener"
-            target="_self"
-            aria-current="page"
-            href="#experience_page"
-          >
-            Experience
-          </ButtonLink>
-          <ButtonLink
-            class="px-3 py-2 text-sm sm:text-md"
-            rel="noopener"
-            target="_self"
-            aria-current="page"
-            href="#projects_page"
-          >
-            Projects
-          </ButtonLink>
-        </div>
-      </div>
-      <!-- Social media-->
-      <div class="hidden sm:flex space-x-2 p-2">
-        <SocialMedia/>
+
+      <div class="hidden shrink-0 md:block">
+        <SocialLinks :size="18" />
       </div>
     </div>
   </nav>
