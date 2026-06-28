@@ -19,7 +19,7 @@ const years = yearsSince(profile.experienceSince);
 <template>
   <section
     id="home"
-    class="flex min-h-screen w-full snap-start items-center justify-center px-4 py-24 sm:px-6 lg:px-8"
+    class="flex min-h-dvh w-full snap-start items-center justify-center px-4 py-24 sm:px-6 lg:px-8"
   >
     <div class="mx-auto w-full max-w-5xl" v-reveal>
       <TerminalWindow :title="`${profile.handle}@${profile.host}: ~`">
