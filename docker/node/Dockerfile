@@ -7,8 +7,8 @@ WORKDIR /var/www
 # Copy `package.json` and `package-lock.json`
 COPY package*.json ./
 
-# Install project dependencies
-RUN npm install
+# Install project dependencies (reproducible install from the lockfile)
+RUN npm ci
 
 # Copy project files into the docker image
 COPY . .

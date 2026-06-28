@@ -2,12 +2,7 @@
 import { editorFiles, getBadge } from '@/data/editorFiles';
 import { useEditor } from '@/composables/useEditor';
 
-const { editorState, setActiveFile } = useEditor();
-
-const openFile = (file) => {
-  setActiveFile(file.id);
-  document.getElementById(file.section)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-};
+const { editorState, goToFile } = useEditor();
 </script>
 
 <template>
@@ -22,7 +17,7 @@ const openFile = (file) => {
           ? 'bg-[#1a1b26] text-[#c0caf5]'
           : 'bg-[#16161e] text-[#565f89] hover:text-[#c0caf5]'
       "
-      @click="openFile(file)"
+      @click="goToFile(file)"
     >
       <span :class="getBadge(file.type).color">{{ getBadge(file.type).tag }}</span>
       <span>{{ file.name }}</span>

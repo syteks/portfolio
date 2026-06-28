@@ -1,4 +1,4 @@
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { useRotatingIndex } from '@/composables/useRotatingIndex';
 
 /**
  * How different languages declare a *mutable* list/array. The Skills section
@@ -25,17 +25,6 @@ export const declarationStyles = [
  * @param {number} intervalMs
  */
 export function useLanguageRotator(intervalMs = 2800) {
-  const styleIndex = ref(0);
-  let timer = null;
-
-  onMounted(() => {
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
-    timer = setInterval(() => {
-      styleIndex.value = (styleIndex.value + 1) % declarationStyles.length;
-    }, intervalMs);
-  });
-
-  onBeforeUnmount(() => clearInterval(timer));
-
-  return { styleIndex, declarationStyles };
+  const { index: styleIndex } = useRotatingIndex(declarationStyles.length, intervalMs);
+  return { styleIndex };
 }

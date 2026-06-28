@@ -1,4 +1,5 @@
 import { ref, watch, onMounted, onBeforeUnmount, toValue } from 'vue';
+import { prefersReducedMotion } from '@/utils/media';
 
 /**
  * Cycles through a list of words with a type / pause / delete effect.
@@ -23,8 +24,6 @@ export function useTypewriter(words, options = {}) {
   let timer = null;
   let stopped = false;
   let mounted = false;
-
-  const reduced = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
   const schedule = (delay) => {
     if (!stopped) timer = setTimeout(tick, delay);
@@ -58,7 +57,7 @@ export function useTypewriter(words, options = {}) {
     deleting = false;
     if (!mounted) return;
 
-    if (reduced() || list.length === 0) {
+    if (prefersReducedMotion() || list.length === 0) {
       text.value = list[0] ?? '';
       return;
     }

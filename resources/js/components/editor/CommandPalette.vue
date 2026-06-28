@@ -3,7 +3,7 @@ import { ref, computed, watch, nextTick } from 'vue';
 import { editorFiles, getBadge } from '@/data/editorFiles';
 import { useEditor } from '@/composables/useEditor';
 
-const { editorState, setActiveFile, closePalette } = useEditor();
+const { editorState, goToFile, closePalette } = useEditor();
 
 const query = ref('');
 const selectedIndex = ref(0);
@@ -26,9 +26,8 @@ const results = computed(() => {
 
 const open = (file) => {
   if (!file) return;
-  setActiveFile(file.id);
   closePalette();
-  document.getElementById(file.section)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  goToFile(file);
 };
 
 const moveSelection = (delta) => {

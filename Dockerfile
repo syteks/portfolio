@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json vite.config.* postcss.config.js tailwind.config.js ./
 COPY resources ./resources
 
-RUN npm install && npm run build
+RUN npm ci && npm run build
 
 
 # -----------------------------------------------

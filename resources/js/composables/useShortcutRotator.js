@@ -1,11 +1,12 @@
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { computed } from 'vue';
+import { useRotatingIndex } from '@/composables/useRotatingIndex';
 
 /**
  * The command-palette hotkey listens for BOTH Cmd+K (macOS) and Ctrl+K
  * (Windows/Linux). Rather than guess the platform, the hint *rotates* between
  * the two labels so it reads correctly to every visitor.
  */
-export const shortcutLabels = ['Ctrl K', '⌘K'];
+const shortcutLabels = ['Ctrl K', '⌘K'];
 
 /**
  * Reactive label cycling through shortcutLabels on an interval. Respects
@@ -14,19 +15,8 @@ export const shortcutLabels = ['Ctrl K', '⌘K'];
  * @param {number} intervalMs
  */
 export function useShortcutRotator(intervalMs = 2600) {
-  const labelIndex = ref(0);
-  let timer = null;
+  const { index } = useRotatingIndex(shortcutLabels.length, intervalMs);
+  const shortcutLabel = computed(() => shortcutLabels[index.value]);
 
-  onMounted(() => {
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
-    timer = setInterval(() => {
-      labelIndex.value = (labelIndex.value + 1) % shortcutLabels.length;
-    }, intervalMs);
-  });
-
-  onBeforeUnmount(() => clearInterval(timer));
-
-  const shortcutLabel = computed(() => shortcutLabels[labelIndex.value]);
-
-  return { shortcutLabel, labelIndex, shortcutLabels };
+  return { shortcutLabel };
 }

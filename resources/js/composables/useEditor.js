@@ -34,10 +34,17 @@ const closePalette = () => {
 const activeFile = () =>
   editorFiles.find((file) => file.id === editorState.activeFileId) ?? editorFiles[0];
 
+/** Mark a file active and smooth-scroll its section into view. */
+const goToFile = (file) => {
+  setActiveFile(file.id);
+  document.getElementById(file.section)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
 export function useEditor() {
   return {
     editorState,
     setActiveFile,
+    goToFile,
     openPalette,
     closePalette,
     activeFile,

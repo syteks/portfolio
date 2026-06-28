@@ -1,4 +1,5 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { isTouchDevice } from '@/utils/media';
 
 /**
  * Drives a self-playing "spotlight" walkthrough of a list. When the bound
@@ -42,8 +43,7 @@ export function useSequentialHighlight(count, options = {}) {
 
   // Touch/no-hover only: highlight whichever card sits closest to the centre.
   const enableCenterFocus = () => {
-    const touch = window.matchMedia?.('(hover: none)').matches;
-    if (!touch || typeof IntersectionObserver === 'undefined') return;
+    if (!isTouchDevice() || typeof IntersectionObserver === 'undefined') return;
 
     const recompute = () => {
       const viewportHeight = window.innerHeight;
@@ -109,8 +109,7 @@ export function useSequentialHighlight(count, options = {}) {
   });
 
   const isRevealed = (index) => index <= maxRevealed.value;
-  const isActive = (index) => index === activeIndex.value;
   const isHighlighted = (index) => index === activeIndex.value || index === focusedIndex.value;
 
-  return { target, registerItem, isRevealed, isActive, isHighlighted };
+  return { target, registerItem, isRevealed, isHighlighted };
 }

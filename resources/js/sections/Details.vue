@@ -5,6 +5,7 @@ import { profile } from '@/data/profile';
 import { education } from '@/data/education';
 import Section from '@components/ui/Section.vue';
 import TerminalWindow from '@components/ui/TerminalWindow.vue';
+import PathHeading from '@components/ui/PathHeading.vue';
 
 const { t } = useI18n({ useScope: 'global' });
 
@@ -30,9 +31,7 @@ const levelColor = (level) =>
     <div class="grid gap-10 lg:grid-cols-2 lg:gap-12">
       <!-- Education -->
       <div>
-        <h3 class="mb-6 font-mono text-sm font-semibold uppercase tracking-wider text-[#565f89]">
-          <span class="text-[#7dcfff]">~/</span>{{ t('profile.headings.education') }}
-        </h3>
+        <PathHeading class="mb-6">{{ t('profile.headings.education') }}</PathHeading>
         <div class="relative space-y-6">
           <span class="pointer-events-none absolute bottom-2 left-[6px] top-2 w-px bg-white/10" />
           <article
@@ -91,9 +90,7 @@ const levelColor = (level) =>
 
         <!-- languages -->
         <div v-reveal="{ delay: '80ms' }">
-          <h3 class="mb-3 font-mono text-sm font-semibold uppercase tracking-wider text-[#565f89]">
-            <span class="text-[#7dcfff]">~/</span>{{ t('profile.headings.languages') }}
-          </h3>
+          <PathHeading class="mb-3">{{ t('profile.headings.languages') }}</PathHeading>
           <ul class="divide-y divide-white/[0.06] overflow-hidden rounded-xl border border-white/[0.06] bg-[#1f2335]/40">
             <li
               v-for="lang in profile.languages"
@@ -118,9 +115,7 @@ const levelColor = (level) =>
 
         <!-- interests -->
         <div v-reveal="{ delay: '160ms' }">
-          <h3 class="mb-3 font-mono text-sm font-semibold uppercase tracking-wider text-[#565f89]">
-            <span class="text-[#7dcfff]">~/</span>{{ t('profile.headings.interests') }}
-          </h3>
+          <PathHeading class="mb-3">{{ t('profile.headings.interests') }}</PathHeading>
           <div class="flex flex-wrap gap-2">
             <span
               v-for="interest in profile.interests"

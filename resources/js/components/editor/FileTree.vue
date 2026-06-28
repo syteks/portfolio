@@ -3,18 +3,15 @@ import { editorFiles, getBadge } from '@/data/editorFiles';
 import { useEditor } from '@/composables/useEditor';
 import { useShortcutRotator } from '@/composables/useShortcutRotator';
 
-const { shortcutLabel } = useShortcutRotator();
+const emit = defineEmits(['navigate']);
 
-const { editorState, setActiveFile } = useEditor();
+const { shortcutLabel } = useShortcutRotator();
+const { editorState, goToFile } = useEditor();
 
 const openFile = (file) => {
-  setActiveFile(file.id);
-  document.getElementById(file.section)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  // collapse the tree on mobile after picking a file
-  emit('navigate');
+  goToFile(file);
+  emit('navigate'); // collapse the tree on mobile after picking a file
 };
-
-const emit = defineEmits(['navigate']);
 </script>
 
 <template>

@@ -12,13 +12,15 @@
  *
  * Usage: <div v-reveal> or <div v-reveal="{ delay: '120ms', threshold: 0.1 }">
  */
+import { prefersReducedMotion } from '@/utils/media';
+
 export const vReveal = {
   mounted(el, binding) {
     if (typeof IntersectionObserver === 'undefined') {
       return; // leave content visible as-is
     }
 
-    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const reduce = prefersReducedMotion();
     const { delay, threshold } = binding.value ?? {};
     if (delay) el.style.setProperty('--reveal-delay', delay);
     // Reduced-motion users still get a plain opacity fade (no rise/blur, which

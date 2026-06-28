@@ -1,63 +1,22 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { editorFiles } from '@/data/editorFiles';
+import { ref } from 'vue';
 import { useEditor } from '@/composables/useEditor';
+import { useEditorScroll } from '@/composables/useEditorScroll';
+import { useCommandPaletteHotkey } from '@/composables/useCommandPaletteHotkey';
 import { useShortcutRotator } from '@/composables/useShortcutRotator';
 import FileTree from '@components/editor/FileTree.vue';
 import BufferTabs from '@components/editor/BufferTabs.vue';
 import StatusLine from '@components/editor/StatusLine.vue';
 import CommandPalette from '@components/editor/CommandPalette.vue';
 
-const { editorState, setActiveFile, openPalette, closePalette } = useEditor();
+const { editorState, openPalette } = useEditor();
 const { shortcutLabel } = useShortcutRotator();
 
-const scrollRef = ref(null);
-const isTreeOpen = ref(false); // mobile drawer
+const scrollRef = ref(null); // the scrolling content area
+const isTreeOpen = ref(false); // mobile file-tree drawer
 
-const handleScroll = () => {
-  const container = scrollRef.value;
-  if (!container) return;
-
-  const max = container.scrollHeight - container.clientHeight;
-  const percent = max > 0 ? container.scrollTop / max : 0;
-  editorState.scrollPercent = Math.round(percent * 100);
-
-  // Fake-but-lively cursor position derived from scroll.
-  editorState.cursorLine = 1 + Math.round(percent * 240);
-  editorState.cursorColumn = 1 + Math.round((container.scrollTop % 80) / 2);
-
-  // Scroll-spy: the active file is the last section whose top passed the fold.
-  const probe = container.scrollTop + container.clientHeight * 0.3;
-  let current = editorFiles[0];
-  for (const file of editorFiles) {
-    const element = document.getElementById(file.section);
-    if (element && element.offsetTop <= probe) current = file;
-  }
-  if (current.id !== editorState.activeFileId) setActiveFile(current.id);
-};
-
-const onKeydown = (event) => {
-  const isPaletteHotkey = (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k';
-  const typingInField = ['INPUT', 'TEXTAREA'].includes(event.target.tagName);
-
-  if (isPaletteHotkey || (event.key === '/' && !typingInField && !editorState.isPaletteOpen)) {
-    event.preventDefault();
-    openPalette();
-  } else if (event.key === 'Escape') {
-    closePalette();
-  }
-};
-
-onMounted(() => {
-  scrollRef.value?.addEventListener('scroll', handleScroll, { passive: true });
-  window.addEventListener('keydown', onKeydown);
-  handleScroll();
-});
-
-onBeforeUnmount(() => {
-  scrollRef.value?.removeEventListener('scroll', handleScroll);
-  window.removeEventListener('keydown', onKeydown);
-});
+useEditorScroll(scrollRef);
+useCommandPaletteHotkey();
 </script>
 
 <template>

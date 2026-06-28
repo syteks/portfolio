@@ -1,6 +1,8 @@
 <script setup>
 import { ref, reactive, onMounted, onBeforeUnmount, computed } from 'vue';
 import { profile } from '@/data/profile';
+import { prefersReducedMotion } from '@/utils/media';
+import TrafficLights from '@components/ui/TrafficLights.vue';
 
 /**
  * Landing intro: a Fedora-style boot, then a GNOME-ish desktop where a terminal
@@ -19,6 +21,17 @@ const terminalReady = ref(false);
 const user = profile.handle || 'sergiu';
 const promptHost = 'fedora';
 const command = `nvim ${user}`;
+
+// All durations for the intro choreography, in milliseconds, in one place.
+const TIMING = {
+  bootLine: 140, // gap between systemd log lines
+  afterBootLog: 650, // pause once the log finishes
+  desktopSettle: 550, // desktop shown → terminal window animates in
+  terminalSettle: 750, // terminal visible → start typing
+  typeChar: 85, // gap between typed characters
+  beforeLaunch: 550, // "press enter" beat after typing
+  launchHandoff: 450, // "launching nvim…" before handing off to the editor
+};
 
 const clock = ref('');
 const updateClock = () => {
@@ -57,42 +70,49 @@ const finish = () => {
 
 const skip = () => finish();
 
-const run = async () => {
-  // Print boot log line by line.
+// Each phase of the intro is its own small step; `run` sequences them and bails
+// out early if the user skips (cancelled) at any point.
+const printBootLog = async () => {
   for (const line of BOOT_LOG) {
     if (cancelled) return;
     bootLines.push(line);
-    await wait(140);
+    await wait(TIMING.bootLine);
   }
-  await wait(650);
-  if (cancelled) return;
+  await wait(TIMING.afterBootLog);
+};
 
-  // Switch to the desktop; let the terminal window animate in.
+const openTerminal = async () => {
   phase.value = 'desktop';
-  await wait(550);
+  await wait(TIMING.desktopSettle);
   terminalReady.value = true;
-  await wait(750);
-  if (cancelled) return;
+  await wait(TIMING.terminalSettle);
+};
 
-  // Type the command.
+const typeCommand = async () => {
   phase.value = 'typing';
   for (const char of command) {
     if (cancelled) return;
     typedCommand.value += char;
-    await wait(85);
+    await wait(TIMING.typeChar);
   }
-  await wait(550); // "press enter" beat
-  if (cancelled) return;
+  await wait(TIMING.beforeLaunch);
+};
 
-  // Hand off to the real editor.
+const launchEditor = async () => {
   phase.value = 'launching';
-  await wait(450);
+  await wait(TIMING.launchHandoff);
   finish();
 };
 
+const run = async () => {
+  for (const phaseStep of [printBootLog, openTerminal, typeCommand, launchEditor]) {
+    if (cancelled) return;
+    await phaseStep();
+  }
+};
+
 onMounted(() => {
-  const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) {
+  if (prefersReducedMotion()) {
     finish();
     return;
   }
@@ -160,9 +180,7 @@ const showDesktop = computed(() => phase.value !== 'boot');
         >
           <!-- header bar -->
           <div class="flex items-center gap-2 bg-[#2b2b2b] px-3 py-2">
-            <span class="h-3 w-3 rounded-full bg-[#ff5f56]" />
-            <span class="h-3 w-3 rounded-full bg-[#ffbd2e]" />
-            <span class="h-3 w-3 rounded-full bg-[#27c93f]" />
+            <TrafficLights tone="mac" />
             <span class="flex-1 text-center text-xs text-white/70">{{ user }}@{{ promptHost }}:~</span>
           </div>
           <!-- body -->

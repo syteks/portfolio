@@ -6,6 +6,7 @@ import { getAccent } from '@/utils/accents';
 import Section from '@components/ui/Section.vue';
 import TimelineItem from '@components/ui/TimelineItem.vue';
 import StackChip from '@components/ui/StackChip.vue';
+import PathHeading from '@components/ui/PathHeading.vue';
 import Link from '@components/core/svgs/Link.vue';
 
 const { t, tm, rt } = useI18n({ useScope: 'global' });
@@ -80,9 +81,7 @@ const roles = computed(() => {
 
           <!-- Tech stack — everything visible -->
           <div class="lg:col-span-2">
-            <h3 class="mb-5 font-mono text-sm font-semibold uppercase tracking-wider text-[#565f89]">
-              <span class="text-[#7dcfff]">~/</span>stack
-            </h3>
+            <PathHeading class="mb-5">stack</PathHeading>
 
             <div class="space-y-5">
               <div

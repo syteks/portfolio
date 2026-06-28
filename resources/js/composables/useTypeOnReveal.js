@@ -1,4 +1,5 @@
 import { ref, watch, onMounted, onBeforeUnmount, toValue } from 'vue';
+import { prefersReducedMotion } from '@/utils/media';
 
 /**
  * Types `source` out one character at a time the first time the bound element
@@ -27,13 +28,11 @@ export function useTypeOnReveal(source, { speed = 55 } = {}) {
   let observer = null;
   let revealed = false; // has the element entered the viewport at least once?
 
-  const reduced = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-
   const typeOut = () => {
     clearTimeout(typeTimer);
     const fullText = toValue(source) ?? '';
 
-    if (reduced() || !fullText) {
+    if (prefersReducedMotion() || !fullText) {
       typed.value = fullText;
       isComplete.value = true;
       return;
@@ -62,7 +61,7 @@ export function useTypeOnReveal(source, { speed = 55 } = {}) {
   };
 
   onMounted(() => {
-    if (reduced() || typeof IntersectionObserver === 'undefined' || !target.value) {
+    if (prefersReducedMotion() || typeof IntersectionObserver === 'undefined' || !target.value) {
       reveal();
       return;
     }
