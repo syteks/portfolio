@@ -18,7 +18,7 @@ const { target, typed } = useTypeOnReveal(() => props.title ?? '');
 </script>
 
 <template>
-  <section :id="id" class="min-h-screen w-full px-4 py-16 sm:px-6 lg:px-10">
+  <section :id="id" class="min-h-dvh w-full px-4 py-16 sm:px-6 lg:px-10">
     <div class="mx-auto max-w-6xl">
       <header ref="target" v-reveal class="mb-10 font-mono sm:mb-14">
         <div class="flex items-baseline gap-4">

@@ -12,7 +12,7 @@ export const editorFiles = [
 ];
 
 /** Short uppercase tag + color per filetype (stand-in for nerd-font icons). */
-export const fileTypeBadges = {
+const fileTypeBadges = {
   md: { tag: 'md', color: 'text-sky-400' },
   json: { tag: '{}', color: 'text-amber-400' },
   log: { tag: '≡', color: 'text-emerald-400' },

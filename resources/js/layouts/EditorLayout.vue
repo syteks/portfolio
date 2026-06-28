@@ -20,7 +20,7 @@ useCommandPaletteHotkey();
 </script>
 
 <template>
-  <div class="relative flex h-screen flex-col overflow-hidden bg-[#1a1b26] text-[#c0caf5]">
+  <div class="relative flex h-dvh flex-col overflow-hidden bg-[#1a1b26] text-[#c0caf5]">
     <!-- scroll/build progress line -->
     <div class="pointer-events-none absolute inset-x-0 top-0 z-[70] h-0.5 bg-white/5">
       <div
